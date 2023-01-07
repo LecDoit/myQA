@@ -12,6 +12,7 @@ const App = () => {
   var [dashboardsXML, setDashboardsXML] = useState(null)
   var [worksheetsXML, setWorksheetsXML] = useState(null)
   var [dashboards, setdashboards] = useState([])
+  var [dashTitle, setDashTitle] = useState([])
 
 
   const dashboardFactory = (name, size, formattedText) => {
@@ -50,34 +51,34 @@ const App = () => {
 
     if (xml) {
 
-      let dashTitleObj = {}
-      let dashboardInstanceArr = []
+      let dashboardNameArr = []
+      let dashTitleInstanceArr = []
 
       //for loop over dashboards
       for (let a = 0; a < dashboardsXML.children.length; a++) {
-
+        let dashTitleObj = {}
 
         let dashboard = (dashboardsXML.children[a])
         let dbname = (dashboard.attributes.name)
+        dashboardNameArr.push(dbname)
 
-        let dashTitle = (dashboard.getElementsByTagName('style')[0].getElementsByTagName('style-rule')[0])
-        let dashTitle2 = (dashboard['children'])
 
-        let styleIndex = dashTitle2.findIndex(x => x.name == 'style')
+        let dashTitle = (dashboard['children'])
+
+        let styleIndex = dashTitle.findIndex(x => x.name == 'style')
 
         try {
-          let style = (dashTitle2[styleIndex]["children"])
+          let style = (dashTitle[styleIndex]["children"])
           for (let a = 0; a < style.length; a++) {
             let element = (style[a].attributes.element)
-            // console.log(element)
             if (element == 'dash-title') {
               let dashTitle = (style[a]['children'])
 
-
-              //for loop over items in style/style-rule 
+              let dict = {}
+              //for loop over items in style/style-rule - format with 
               for (let b = 0; b < dashTitle.length; b++) {
 
-                let dict = {}
+
                 let dashTitleAttr = dashTitle[b].attributes.attr
                 let dashTitleValue = dashTitle[b].attributes.value
 
@@ -133,91 +134,25 @@ const App = () => {
               }
 
               let dashTitleInstance = dashTitleFactory(fontWeightCheck, fontStyleCheck, textDecorationCheck, fontFamilyCheck, fontSizeCheck, colorCheck, textAlignCheck, backgroundColorCheck, borderWidthCheck, borderColorCheck, borderStyleCheck)
-              console.log(dashTitleInstance)
+              dashTitleInstanceArr.push(dashTitleInstance)
+
             }
 
-
+            //whats gonna happen when there is no change -all has to be  default
           }
         } catch (error) {
           console.log(error)
         }
 
 
-        if ((dashboard.getElementsByTagName('style')[0].getElementsByTagName('style-rule')[0])) {
-          //for loop over items in style/style-rule 
-          for (let b = 0; b < dashTitle.children.length; b++) {
 
-            let dict = {}
-            let dashTitleAttr = dashTitle.children[b].attributes.attr
-            let dashTitleValue = dashTitle.children[b].attributes.value
 
-            dashTitleObj[dashTitleAttr] = dashTitleValue
-          }
-          let fontWeightCheck = dashTitleObj['font-weight']
-          let fontStyleCheck = dashTitleObj['font-style']
-          let textDecorationCheck = dashTitleObj['text-decoration']
-          let fontFamilyCheck = dashTitleObj['font-family']
-          let fontSizeCheck = dashTitleObj['font-size']
-          let colorCheck = dashTitleObj['color']
-          let textAlignCheck = dashTitleObj['text-align']
-          let backgroundColorCheck = dashTitleObj['background-color']
-          let borderWidthCheck = dashTitleObj['border-width']
-          let borderColorCheck = dashTitleObj['border-color']
-          let borderStyleCheck = dashTitleObj['border-style']
-          if (fontWeightCheck == undefined) {
-            fontWeightCheck = 'Default'
-          }
-          if (fontStyleCheck == undefined) {
-            fontStyleCheck = 'Default'
-          }
-          if (textDecorationCheck == undefined) {
-            textDecorationCheck = 'Default'
-          }
-          if (fontFamilyCheck == undefined) {
-            fontFamilyCheck = 'Default'
-          }
-          if (fontSizeCheck == undefined) {
-            fontSizeCheck = 'Default'
-          }
-          if (colorCheck == undefined) {
-            colorCheck = 'Default'
-          }
-          if (textAlignCheck == undefined) {
-            textAlignCheck = 'Default'
-          }
-          if (textAlignCheck == undefined) {
-            textAlignCheck = 'Default'
-          }
-          if (backgroundColorCheck == undefined) {
-            backgroundColorCheck = 'Default'
-          }
-          if (borderWidthCheck == undefined) {
-            borderWidthCheck = 'Default'
-          }
-          if (borderColorCheck == undefined) {
-            borderColorCheck = 'Default'
-          }
-          if (borderStyleCheck == undefined) {
-            borderStyleCheck = 'Default'
-          }
-
-          let dashTitleInstance = dashTitleFactory(fontWeightCheck, fontStyleCheck, textDecorationCheck, fontFamilyCheck, fontSizeCheck, colorCheck, textAlignCheck, backgroundColorCheck, borderWidthCheck, borderColorCheck, borderStyleCheck)
-          // console.log(dashTitleInstance)
-        } else {
-          // console.log('not exist') FINISHED HERE
-        }
-
-        // if (( typeof(dashboardsXMLGet.children[a].getElementsByTagName('layout-options')[0].getElementsByTagName('title')[0]).getElementsByTagName('run')[0].attributes) =='undefined'){
-        //   console.log('its blank')
-        // } else{
-
-        // let dbformattedText = (dashboardsXML.children[a].getElementsByTagName('layout-options')[0].getElementsByTagName('title')[0]).getElementsByTagName('run')[0].attributes
-        // console.log(dbformattedText)
-        // console.log(dashTitle)
 
 
       }
       console.log("test")
+      console.log(dashboardNameArr)
+      console.log(dashTitleInstanceArr)
 
 
     }
