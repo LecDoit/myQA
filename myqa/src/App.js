@@ -85,11 +85,13 @@ const App = () => {
 
           let dashTitle = (dashboard['children'])
           let styleIndex = dashTitle.findIndex(x => x.name == 'style')
+          var testing = {test:"Default",
+                          two:'font'}
           // console.log(dashTitle[styleIndex])
           try {
             let style = (dashTitle[styleIndex]["children"])
 
-            //check if style exist in dashboartd
+            //check if style exist in dashboard, if not than default to all 4 items
             //HERE WE HAVE TO ADD 1 MORE
             if (style.length == 0) {
 
@@ -104,13 +106,17 @@ const App = () => {
               //style exist so lets scrap
               for (let c = 0; c<dashboardsXML.children.length;c++){
                
-              //ender here
+              //we are not checking how many elements are there - we expect 4 and we do what is there
+              // setup a default one and if its something new than overwrite
               for (let a = 0; a < style.length; a++) {
                 let element = (style[a].attributes.element)
+                // console.log(element)
+                // console.log(style[a])
 
-//scrap it with loop of number of dashboards not the numbers of rows under the element
                 if (element === 'dash-title') {
                   let dashTitle = (style[a]['children'])
+                  // testing["Default"] = 'sex'
+                  console.log(testing.test)
 
                   // let dict = {}
                   //for loop over items in style/style-rule - format with 
@@ -292,10 +298,11 @@ const App = () => {
           } catch (error) {
             console.log(error)
           }
+          console.log(testing)
         }
-        // console.log("end test")
+
         // console.log(dashboardNameArr)
-        console.log(dashTitleInstanceArr)
+        // console.log(dashTitleInstanceArr)
         // console.log(dashSubTitleInstanceArr)
         // console.log(dashTextInstanceArr)
         // console.log(tableInstanceArr)
