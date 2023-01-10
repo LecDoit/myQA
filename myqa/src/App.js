@@ -75,7 +75,6 @@ const App = () => {
         //for loop over dashboards
         for (let a = 0; a < dashboardsXML.children.length; a++) {
           let dashTitleObj = {}
-          let tableObj = {}
           let dashSubTitleObj = {}
           let dashTextObj = {}
 
@@ -83,43 +82,40 @@ const App = () => {
           let dbname = (dashboard.attributes.name)
           dashboardNameArr.push(dbname)
 
-          let dashTitle = (dashboard['children'])
-          let styleIndex = dashTitle.findIndex(x => x.name == 'style')
-          var testing = {test:"Default",
-                          two:'font'}
-          // console.log(dashTitle[styleIndex])
+          let dashboardChildren = (dashboard['children'])
+          let styleIndex = dashboardChildren.findIndex(x => x.name == 'style')
+ 
           try {
-            let style = (dashTitle[styleIndex]["children"])
+            let style = (dashboardChildren[styleIndex]["children"])
 
             //check if style exist in dashboard, if not than default to all 4 items
-            //HERE WE HAVE TO ADD 1 MORE
             if (style.length == 0) {
 
               let dashTableInstance = tableFactory('Default')
               let dashTitleInstance = dashTitleFactory('Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default',)
               let dashSubTitleInstance = dashSubTitleFactory('Default','Default','Default','Default','Default','Default','Default')
+              let dashTextInstance = dashTextFactory('Default','Default','Default','Default','Default','Default','Default','Default','Default')
 
               tableInstanceArr.push(dashTableInstance)
               dashTitleInstanceArr.push(dashTitleInstance)
               dashSubTitleInstanceArr.push(dashSubTitleInstance)
+              dashTextInstanceArr.push(dashTextInstance)
+
             } else {
               //style exist so lets scrap
-              for (let c = 0; c<dashboardsXML.children.length;c++){
-               
-              //we are not checking how many elements are there - we expect 4 and we do what is there
-              // setup a default one and if its something new than overwrite
+              // we have to setup the default instance and change if the value exist in XML
+              let TableInstance = tableFactory('Default')
+              let dashTitleInstance = dashTitleFactory('Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default',)
+              let dashSubTitleInstance = dashSubTitleFactory('Default','Default','Default','Default','Default','Default','Default')
+              let dashTextInstance = dashTextFactory('Default','Default','Default','Default','Default','Default','Default','Default','Default')
+
+
               for (let a = 0; a < style.length; a++) {
                 let element = (style[a].attributes.element)
-                // console.log(element)
-                // console.log(style[a])
 
                 if (element === 'dash-title') {
                   let dashTitle = (style[a]['children'])
-                  // testing["Default"] = 'sex'
-                  console.log(testing.test)
 
-                  // let dict = {}
-                  //for loop over items in style/style-rule - format with 
                   for (let b = 0; b < dashTitle.length; b++) {
 
 
@@ -175,15 +171,27 @@ const App = () => {
                     borderStyleCheck = 'Default'
                   }
 
-                  let dashTitleInstance = dashTitleFactory(fontWeightCheck, fontStyleCheck, textDecorationCheck, fontFamilyCheck, fontSizeCheck, colorCheck, textAlignCheck, backgroundColorCheck, borderWidthCheck, borderColorCheck, borderStyleCheck)
-                  dashTitleInstanceArr.push(dashTitleInstance)
+                  dashTitleInstance.fontWeight = fontWeightCheck
+                  dashTitleInstance.fontStyle = fontStyleCheck
+                  dashTitleInstance.textDecoration = textDecorationCheck
+                  dashTitleInstance.fontFamily = fontFamilyCheck
+                  dashTitleInstance.fontSize = fontSizeCheck
+                  dashTitleInstance.color = colorCheck
+                  dashTitleInstance.textAlign = textAlignCheck
+                  dashTitleInstance.backgroundColor = backgroundColorCheck
+                  dashTitleInstance.borderWidth = borderWidthCheck
+                  dashTitleInstance.borderColor = borderColorCheck
+                  dashTitleInstance.borderStyle = borderStyleCheck
+                  // let dashTitleInstance = dashTitleFactory(fontWeightCheck, fontStyleCheck, textDecorationCheck, fontFamilyCheck, fontSizeCheck, colorCheck, textAlignCheck, backgroundColorCheck, borderWidthCheck, borderColorCheck, borderStyleCheck)
+                  // dashTitleInstanceArr.push(dashTitleInstance)
 
                 } else if (element === 'table') {
                   let tableValue = (style[a].children[0].attributes.value)
-                  let tableInstance = tableFactory(tableValue)
-                  tableInstanceArr.push(tableInstance)
+                  TableInstance.backgroundColor = tableValue
+ 
                 } else if (element === 'dash-subtitle') {
                   let dashSubTitle = (style[a]['children'])
+ 
                   for (let b = 0; b < dashSubTitle.length; b++) {
 
                     let dashSubTitleAttr = dashSubTitle[b].attributes.attr
@@ -223,9 +231,16 @@ const App = () => {
                     backgroundColorCheck = 'Default'
                   }
 
-                  let dashSubTitleInstance = dashSubTitleFactory(fontWeightCheck, fontStyleCheck, textDecorationCheck, fontFamilyCheck, fontSizeCheck, colorCheck, backgroundColorCheck)
+                  dashSubTitleInstance.fontWeight = fontWeightCheck
+                  dashSubTitleInstance.fontStyle = fontStyleCheck
+                  dashSubTitleInstance.textDecoration = textDecorationCheck
+                  dashSubTitleInstance.fontFamily = fontFamilyCheck
+                  dashSubTitleInstance.fontSize = fontSizeCheck
+                  dashSubTitleInstance.color = colorCheck
+                  dashSubTitleInstance.backgroundColor = backgroundColorCheck
+                  // let dashSubTitleInstance = dashSubTitleFactory(fontWeightCheck, fontStyleCheck, textDecorationCheck, fontFamilyCheck, fontSizeCheck, colorCheck, backgroundColorCheck)
 
-                  dashSubTitleInstanceArr.push(dashSubTitleInstance)
+                  // dashSubTitleInstanceArr.push(dashSubTitleInstance)
 
                 } else if (element === 'dash-text') {
                   let dashText = style[a]['children']
@@ -281,32 +296,30 @@ const App = () => {
                   if (wrapCheck == undefined) {
                     wrapCheck = 'Default'
                   }
+
+                  dashTextInstance.fontFamily = fontFamilyCheck
+                  dashTextInstance.fontSize = fontSizeCheck
+                  dashTextInstance.fontWeight = fontWeightCheck
+                  dashTextInstance.fontStyle = fontStyleCheck
+                  dashTextInstance.textDecoration = textDecorationCheck
+                  dashTextInstance.color = colorCheck
+                  dashTextInstance.textAlign = textAlignCheck
+                  dashTextInstance.textOrientation = textOrientationCheck
+                  dashTextInstance.verticalAlign = verticalAlignCheck
             
-                  let dashTextInstance = dashTextFactory(fontFamilyCheck,fontSizeCheck,fontWeightCheck,fontStyleCheck,textDecorationCheck,colorCheck,textAlignCheck,textOrientationCheck,verticalAlignCheck,wrapCheck)
-                  dashTextInstanceArr.push(dashTextInstance)
+                  
                 }
-                else {
-                  let dashTitleInstance = dashTitleFactory('gurwa', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default',)
-                  dashTitleInstanceArr.push(dashTitleInstance)
-
-                }
-                
-
-              }
             }
+            tableInstanceArr.push(TableInstance)
+            dashTitleInstanceArr.push(dashTitleInstance)
+            dashSubTitleInstanceArr.push(dashSubTitleInstance)
+            dashTextInstanceArr.push(dashTextInstance)
+            
             }
           } catch (error) {
             console.log(error)
           }
-          console.log(testing)
         }
-
-        // console.log(dashboardNameArr)
-        // console.log(dashTitleInstanceArr)
-        // console.log(dashSubTitleInstanceArr)
-        // console.log(dashTextInstanceArr)
-        // console.log(tableInstanceArr)
-
       }
     }
   }, [dashboardsXML])
