@@ -9,30 +9,13 @@ const App = () => {
   var XMLParser = require('react-xml-parser')
 
   const [xml, setXML] = useState(null)
+  const [workbookStyleXML, setWorkbookStyleXML] = useState(null)
   const [dashboardsXML, setDashboardsXML] = useState(null)
   const [worksheetsXML, setWorksheetsXML] = useState(null)
   const [dashboards, setdashboards] = useState([])
   const [dashTitle, setDashTitle] = useState([])
 
 
-  const dashboardFactory = (name, size, formattedText) => {
-    return { name, size, formattedText }
-  }
-
-  const dashTitleFactory = (fontWeight, fontStyle, textDecoration, fontFamily, fontSize, color, textAlign, backgroundColor, borderWidth, borderColor, borderStyle) => {
-    return { fontWeight, fontStyle, textDecoration, fontFamily, fontSize, color, textAlign, backgroundColor, borderWidth, borderColor, borderStyle }
-  }
-  const dashSubTitleFactory = (fontWeight, fontStyle, textDecoration, fontFamily, fontSize, color, backgroundColor) => {
-    return { fontWeight, fontStyle, textDecoration, fontFamily, fontSize, color, backgroundColor }
-  }
-
-  const dashTextFactory = (fontFamily, fontSize, fontWeight, fontStyle, textDecoration, color, textAlign, textOrientation, verticalAlign, wrap) => {
-    return { fontFamily, fontSize, fontWeight, fontStyle, textDecoration, color, textAlign, textOrientation, verticalAlign, wrap }
-  }
-
-  const tableFactory = (backgroundColor) => {
-    return { backgroundColor }
-  }
 
   let dashboardsPick = () => {
     console.log(xml)
@@ -48,6 +31,15 @@ const App = () => {
         setXML(res.data)
 
         var xmlRAW = new XMLParser().parseFromString(res.data)
+
+
+        let workbookXMLGet= (xmlRAW.getElementsByTagName('workbook')[0].children)
+        for (let a = 0;a<workbookXMLGet.length;a++){
+          if ((workbookXMLGet[a].name)==='style'){
+            setWorkbookStyleXML(workbookXMLGet[a])
+          }
+        }
+
         let dashboardsXMLGet = xmlRAW.getElementsByTagName('dashboards')[0]
         setDashboardsXML(dashboardsXMLGet)
 
@@ -60,8 +52,34 @@ const App = () => {
 
   useEffect(() => {
     // formatDashboard(dashboardsXML)
+    let formatWorkbookFunc = (workbookXML) =>{
+      if (workbookXML){
+        let styleRuleArr = (workbookXML.children)
 
-  }, [dashboardsXML])
+        for (let a = 0;a<styleRuleArr.length;a++){
+          let element = styleRuleArr[a].attributes.element
+
+          if (element ==='axis'){
+            let format = styleRuleArr[a].children
+            for (let b = 0 ; b<format.length;b++){
+              let attr = (format[b].attributes.attr)
+              let value = (format[b].attributes.value)
+              console.log(attr)
+              console.log(value)
+            }
+            //ENDED HERE
+            
+          }
+        }
+        
+
+      }
+
+
+    }
+    formatWorkbookFunc(workbookStyleXML)
+
+  }, [workbookStyleXML])
 
   // useEffect(() => {
   //   if (dashboardsXML) {
