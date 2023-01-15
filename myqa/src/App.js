@@ -3,6 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import axios from 'axios'
 // import { formatData } from './helpers'
 import {formatDashboard} from './functions/dashboardFormatFunc'
+import {formatWorkbook} from './functions/workbookFormatFunc'
 
 
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
           if ((workbookXMLGet[a].name)==='style'){
             setWorkbookStyleXML(workbookXMLGet[a])
           }
+
         }
 
         let dashboardsXMLGet = xmlRAW.getElementsByTagName('dashboards')[0]
@@ -50,34 +52,12 @@ const App = () => {
 
   }, [])
 
+
+
+
   useEffect(() => {
     // formatDashboard(dashboardsXML)
-    let formatWorkbookFunc = (workbookXML) =>{
-      if (workbookXML){
-        let styleRuleArr = (workbookXML.children)
-
-        for (let a = 0;a<styleRuleArr.length;a++){
-          let element = styleRuleArr[a].attributes.element
-
-          if (element ==='axis'){
-            let format = styleRuleArr[a].children
-            for (let b = 0 ; b<format.length;b++){
-              let attr = (format[b].attributes.attr)
-              let value = (format[b].attributes.value)
-              console.log(attr)
-              console.log(value)
-            }
-            //ENDED HERE
-            
-          }
-        }
-        
-
-      }
-
-
-    }
-    formatWorkbookFunc(workbookStyleXML)
+    formatWorkbook(workbookStyleXML)
 
   }, [workbookStyleXML])
 

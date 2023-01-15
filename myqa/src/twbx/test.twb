@@ -19,70 +19,44 @@
   </preferences>
   <style>
     <style-rule element='axis'>
-      <format attr='stroke-color' value='#e799b3bc' />
-      <format attr='stroke-size' value='2' />
+      <format attr='line-visibility' value='on' />
       <format attr='line-pattern-only' value='dashed' />
-      <format attr='tick-color' value='#e799b3af' />
+      <format attr='stroke-size' value='3' />
+      <format attr='stroke-color' value='#e15759' />
+      <format attr='tick-color' value='#b6992d' />
     </style-rule>
     <style-rule element='worksheet'>
-      <format attr='font-family' value='Tableau Regular' />
       <format attr='font-weight' value='bold' />
-      <format attr='font-style' value='italic' />
-      <format attr='text-decoration' value='underline' />
-      <format attr='font-size' value='14' />
-      <format attr='color' value='#86bcb6' />
     </style-rule>
     <style-rule element='dropline'>
-      <format attr='stroke-color' value='#499894' />
-      <format attr='stroke-size' value='2' />
       <format attr='line-pattern-only' value='dashed' />
+      <format attr='stroke-size' value='2' />
+      <format attr='stroke-color' value='#ffbe7d' />
     </style-rule>
     <style-rule element='refline'>
-      <format attr='stroke-size' value='3' />
-      <format attr='line-pattern-only' value='dotted' />
-      <format attr='stroke-color' value='#f17b794b' />
+      <format attr='stroke-color' value='#d372954b' />
+      <format attr='line-pattern-only' value='dashed' />
+      <format attr='stroke-size' value='4' />
     </style-rule>
     <style-rule element='gridline'>
       <format attr='line-visibility' value='on' />
-      <format attr='line-pattern-only' value='dotted' />
-      <format attr='stroke-size' value='3' />
-      <format attr='stroke-color' value='#fabfd2e7' />
+      <format attr='line-pattern-only' value='dashed' />
+      <format attr='stroke-size' value='2' />
+      <format attr='stroke-color' value='#1b1b1ba0' />
     </style-rule>
     <style-rule element='zeroline'>
-      <format attr='stroke-color' value='#86bcb6' />
+      <format attr='line-visibility' value='on' />
+      <format attr='line-pattern-only' value='dashed' />
+      <format attr='stroke-size' value='2' />
+      <format attr='stroke-color' value='#e157598b' />
     </style-rule>
     <style-rule element='trendline'>
-      <format attr='stroke-color' value='#72b96667' />
-    </style-rule>
-    <style-rule element='title'>
-      <format attr='font-size' value='22' />
-      <format attr='font-weight' value='bold' />
-      <format attr='font-style' value='italic' />
-      <format attr='text-decoration' value='underline' />
-      <format attr='color' value='#a0cbe8' />
-    </style-rule>
-    <style-rule element='dash-title'>
-      <format attr='font-family' value='Tempus Sans ITC' />
-      <format attr='font-size' value='22' />
-      <format attr='font-weight' value='bold' />
-      <format attr='font-style' value='italic' />
-      <format attr='text-decoration' value='underline' />
-      <format attr='color' value='#9d7660' />
-    </style-rule>
-    <style-rule element='story-title'>
-      <format attr='font-size' value='28' />
-      <format attr='font-family' value='Webdings' />
-      <format attr='font-weight' value='bold' />
-      <format attr='font-style' value='italic' />
-      <format attr='text-decoration' value='underline' />
-      <format attr='color' value='#998f8c' />
-    </style-rule>
-    <style-rule element='tooltip'>
-      <format attr='font-family' value='Thinking Of Betty Light' />
+      <format attr='line-pattern-only' value='dotted' />
+      <format attr='stroke-size' value='3' />
+      <format attr='stroke-color' value='#f1ce6367' />
     </style-rule>
     <style-rule element='all'>
-      <format attr='color' value='#59a14f' />
-      <format attr='font-family' value='Tableau Light' />
+      <format attr='color' value='#8cd17d' />
     </style-rule>
   </style>
   <datasources>
@@ -225,36 +199,12 @@
   </worksheets>
   <dashboards>
     <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Dashboard 1'>
-      <style>
-        <style-rule element='table'>
-          <format attr='background-color' value='#f5f5f5' />
-        </style-rule>
-        <style-rule element='dash-title'>
-          <format attr='text-align' value='center' />
-          <format attr='background-color' value='#fefaf1' />
-          <format attr='border-style' value='solid' />
-          <format attr='border-width' value='5' />
-          <format attr='border-color' value='#818b91' />
-        </style-rule>
-        <style-rule element='dash-subtitle'>
-          <format attr='background-color' value='#f2f2f2' />
-        </style-rule>
-        <style-rule element='dash-text'>
-          <format attr='font-weight' value='bold' />
-          <format attr='font-style' value='italic' />
-          <format attr='text-decoration' value='underline' />
-          <format attr='text-orientation' value='-90' />
-          <format attr='text-align' value='right' />
-          <format attr='vertical-align' value='center' />
-          <format attr='wrap' value='off' />
-          <format attr='font-size' value='48' />
-        </style-rule>
-      </style>
+      <style />
       <size maxheight='768' maxwidth='1366' minheight='768' minwidth='1366' preset-index='0' sizing-mode='fixed' />
       <zones>
         <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
           <zone h='97916' id='3' param='vert' type-v2='layout-flow' w='98828' x='586' y='1042'>
-            <zone h='5990' id='5' type-v2='title' w='98828' x='586' y='1042'>
+            <zone h='5469' id='5' type-v2='title' w='98828' x='586' y='1042'>
               <zone-style>
                 <format attr='border-color' value='#000000' />
                 <format attr='border-style' value='none' />
@@ -262,7 +212,7 @@
                 <format attr='margin' value='4' />
               </zone-style>
             </zone>
-            <zone h='91926' id='4' type-v2='layout-basic' w='98828' x='586' y='7032' />
+            <zone h='92447' id='4' type-v2='layout-basic' w='98828' x='586' y='6511' />
           </zone>
           <zone-style>
             <format attr='border-color' value='#000000' />
@@ -315,34 +265,27 @@
   <thumbnails>
     <thumbnail height='192' name='Dashboard 1' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
-      AAAFoklEQVR4nO3ay09UZxzG8ecgQhGRm4PDVURHBLXaGjCthvSSatMuu2rTNP2Huu6qaZou
-      ujAxbRobo4lWaVUUqxQEuTOoFCwO1+E6croBDNKNoUqa5/tZzTmZzPlNMt/Je96ZIJlMhgJM
-      pW32AMBmIgBYS195EIahvvr6m82cBZDC5RV5ELySy6U/f+JUQ712RQpeycWB5/U1nlNZ/Sll
-      ZG6VJN279KNKj51WXm7Wi79YGGqgpUklh44rI30lqFAz40+UmVOoLVuC9QFEIwXaXRbdyHsA
-      1mj+6TstZe1U8vGgsooP6vj7DfrX7/cwpaHsfMWqyhQEgaQlPcjeoSO1lcvHLyZ8Oqd405xi
-      lcUKJC3OTqu3+apGJ9PU8PEhSdwD4CULU7NKprJU98FHeuezz5Xo79boQIfuXjqv0ccJhUsp
-      jT7o18TYuKYedWp78R49jvdrMbWkudG4nm7J1ujQkMIwlMJQM+OjGu7vUXIqqYXphFqvXFB3
-      2z0pDBX/85YWUs82NaeGepRbUbMcW6i/B/s0lUiouv7E6nMIAC/Vk/42FVYdVhAEmnw4oOjB
-      o4pU1qi8IqJ4T5/++OWMJifGNT+3oM7mm9LTBfU2XdDw8LgG29tUEosp3nxRLbda1Hb5Z3W3
-      tWt+OqGLP3yvjO0FOniiQYOttxWGC2ptvKzum40aifeoo+l3XTt3XvlFhcuTBCqO1Sg5JxVF
-      clbnIwC8VPH7Xaqo3qexh13q7U+o+kCZOm5c1e3Lv6q4aq9i9ScVv3NT2fl5mg9ydfh4nbR1
-      h6IluRodm1estkb50XJtnftLQWG1jpxsUFFpqYp3V6rvznXdOX9WmYXlmhi8r+jRd7X/9Vo9
-      6HuoA/VvKae4QhWVZauzTD3q1PbS/WuWX+vuAYD/Smp2TPGeAaXvuKK80iq90dCgW2e/VXpk
-      j5RVqLTxPnUMDClvd60mum4oO1ql4fbrKojVaayrWWFWgaafjKjk8AmN9TbrbvMVLSYGFAbp
-      qijPU2tLr7YFM9r33jF1/XZG1ae/1OxYl0b6OnU/c1GptJxnH/YwVPu1RlU0fLpmxmDll+CV
-      bdAvPvmQm2Bs2FxyWvHW21pcSlPWtrU7OIszExqfnFckWrTBq4Qa6e9VZM++dUuZRLxdCxkR
-      RYsja85n5exQyd79q8frAti1s0CvZWZscDDg/2HNEujtujc3aw5gUwT8GQ7O2AWCNQKANQKA
-      NQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKA
-      NQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKA
-      NQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKA
-      NQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKA
-      NQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKA
-      NQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKA
-      NQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKA
-      NQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKA
-      NQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKA
-      NQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKANQKAtX8A9VBXfLNuQhkAAAAA
-      SUVORK5CYII=
+      AAAEKklEQVR4nO3ZS08bVwBH8f/4BX5BKEmAIpKAqvb7f4V2XaWLoqiFkAJpeBQwD8fGYHu6
+      SErVRKnUSA2Lc36zsUeeudeWj3zHU5RlWUaCqtz3BKT7ZABCMwChGYDQPgrgl97z7Pd3snW5
+      nX+7Ou4Pd7I7vLh7vnn202dP4tfzzbvHl6PDfH/4w2efS/ovah/uGCdZ62xkMHqdnf5RvqpN
+      czUepFlbyEJ9JvuDgzSq7cwXZU6Hb1LeHmWpvZHbydvs91+lVm1nefZRDt6+yk1ZZrWzkavr
+      g/QnwzTri2kX4wymZU5G53naepjj614ubvt34w8nk3RrM1/yMxDYJ5dAzcbDXN+epVt/kEoq
+      +e1qO73hXiaVTlaay0mKLMwuZ605l93BSWrVVtY667kc/p6T4XbK2uOstZazc/ky3cbC+3Ns
+      ZXjzR7b6b/LN3EZeXu3mSXcj8/XO3bhLrdUURfEl3rv06QBOBntZaK7mxfnPWWk/S7s2m8X2
+      d/m6MZvnpz++O7j46/AyRYokZaZJ/v76lilT5sX5ZlbaT9OuziRFkfXut6mleL+9e5V0H4oP
+      b4S97m+lTC2NajdLzcUcD/Yzmk5SFvU8arRzfN1LtTKbx41mBmlmrjLO2bjMeHyam3KSVn0x
+      i435fyyBesO9jKbTpGhksT6TaWU+nVo9l6OjnN0MUqbIevdZUk5zONxPb3SRbuNBVlpPUvXH
+      QP+jjwKQSPwbVGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBCMwChGYDQ
+      DEBoBiA0AxCaAQjNAIRmAEIzAKEZgNAMQGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQ
+      mgEIzQCEZgBCMwChGYDQDEBoBiA0AxCaAQjNAIRmAEIzAKEZgNAMQGgGIDQDEJoBCM0AhGYA
+      QjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBCMwChGYDQDEBoBiA0AxCaAQjNAIRmAEIzAKEZgNAM
+      QGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBCMwChGYDQDEBoBiA0AxCa
+      AQjNAIRmAEIzAKEZgNAMQGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBC
+      MwChGYDQDEBoBiA0AxCaAQjNAIRmAEIzAKEZgNAMQGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxA
+      aAYgNAMQmgEIzQCEZgBCMwChGYDQDEBoBiA0AxCaAQjNAIRmAEIzAKEZgNAMQGgGIDQDEJoB
+      CM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBCMwChGYDQDEBoBiA0AxCaAQjNAIRmAEIz
+      AKEZgNAMQGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCE9ic408kbD2slgAAA
+      AABJRU5ErkJggg==
     </thumbnail>
     <thumbnail height='192' name='Sheet 1' width='109'>
       iVBORw0KGgoAAAANSUhEUgAAAG0AAADACAYAAAAOeu1mAAAACXBIWXMAAA7DAAAOwwHHb6hk
