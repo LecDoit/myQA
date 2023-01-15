@@ -4,7 +4,8 @@ import axios from 'axios'
 // import { formatData } from './helpers'
 import {formatDashboard} from './functions/dashboardFormatFunc'
 import {formatWorkbook} from './functions/workbookFormatFunc'
-import {formatRC} from './functions/dashboardTitleRCFunc'
+import {formatDashboardRC} from './functions/dashboardTitleRCFunc'
+import {formatWorksheetRC} from './functions/worksheetTitleRCFunc'
 
 
 const App = () => {
@@ -59,7 +60,7 @@ const App = () => {
   useEffect(() => {
     // formatDashboard(dashboardsXML)
     // formatWorkbook(workbookStyleXML)
-    // formatRC(dashboardsXML)
+    formatWorksheetRC(worksheetsXML)
 
   }, [dashboardsXML])
 

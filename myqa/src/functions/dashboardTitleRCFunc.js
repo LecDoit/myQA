@@ -3,7 +3,7 @@ let dashboardTitleRCFactory = (dbname,bold,fontalignment,fontcolor,fontname,font
   }
 
 
-  export let formatRC =  (dbXMLarg)=>{
+  export let formatDashboardRC =  (dbXMLarg)=>{
     if (dbXMLarg){
 
 
@@ -59,14 +59,12 @@ let dashboardTitleRCFactory = (dbname,bold,fontalignment,fontcolor,fontname,font
               dashboardTitleRCInstance["italic"] = italic
               dashboardTitleRCInstance["underline"] = underline
               dashboardTitleRCInstance["value"] = value
-
-              
-
             }
           }
         }
         dashboardTitleRCInstanceArr.push(dashboardTitleRCInstance)
       }
+      console.log(dashboardTitleRCInstanceArr)
     }
     
   }
