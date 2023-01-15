@@ -17,48 +17,11 @@
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
   </preferences>
-  <style>
-    <style-rule element='axis'>
-      <format attr='line-visibility' value='on' />
-      <format attr='line-pattern-only' value='dashed' />
-      <format attr='stroke-size' value='3' />
-      <format attr='stroke-color' value='#e15759' />
-      <format attr='tick-color' value='#b6992d' />
-    </style-rule>
-    <style-rule element='worksheet'>
-      <format attr='font-weight' value='bold' />
-    </style-rule>
-    <style-rule element='dropline'>
-      <format attr='line-pattern-only' value='dashed' />
-      <format attr='stroke-size' value='2' />
-      <format attr='stroke-color' value='#ffbe7d' />
-    </style-rule>
-    <style-rule element='refline'>
-      <format attr='stroke-color' value='#d372954b' />
-      <format attr='line-pattern-only' value='dashed' />
-      <format attr='stroke-size' value='4' />
-    </style-rule>
-    <style-rule element='gridline'>
-      <format attr='line-visibility' value='on' />
-      <format attr='line-pattern-only' value='dashed' />
-      <format attr='stroke-size' value='2' />
-      <format attr='stroke-color' value='#1b1b1ba0' />
-    </style-rule>
-    <style-rule element='zeroline'>
-      <format attr='line-visibility' value='on' />
-      <format attr='line-pattern-only' value='dashed' />
-      <format attr='stroke-size' value='2' />
-      <format attr='stroke-color' value='#e157598b' />
-    </style-rule>
-    <style-rule element='trendline'>
-      <format attr='line-pattern-only' value='dotted' />
-      <format attr='stroke-size' value='3' />
-      <format attr='stroke-color' value='#f1ce6367' />
-    </style-rule>
-    <style-rule element='all'>
-      <format attr='color' value='#8cd17d' />
-    </style-rule>
-  </style>
+  <_.fcp.AnimationOnByDefault.false...style>
+    <_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule element='animation'>
+      <_.fcp.AnimationOnByDefault.false...format attr='animation-on' value='ao-on' />
+    </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
+  </_.fcp.AnimationOnByDefault.false...style>
   <datasources>
     <datasource caption='Sheet1 (data)' inline='true' name='federated.05pueo107ducdh185ds851bq1mkh' version='18.1'>
       <connection class='federated'>
@@ -198,13 +161,20 @@
     </worksheet>
   </worksheets>
   <dashboards>
-    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Dashboard 1'>
+    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='dwa'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
       <style />
-      <size maxheight='768' maxwidth='1366' minheight='768' minwidth='1366' preset-index='0' sizing-mode='fixed' />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
       <zones>
         <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='97916' id='3' param='vert' type-v2='layout-flow' w='98828' x='586' y='1042'>
-            <zone h='5469' id='5' type-v2='title' w='98828' x='586' y='1042'>
+          <zone h='98000' id='3' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='5125' id='5' type-v2='title' w='98400' x='800' y='1000'>
               <zone-style>
                 <format attr='border-color' value='#000000' />
                 <format attr='border-style' value='none' />
@@ -212,7 +182,51 @@
                 <format attr='margin' value='4' />
               </zone-style>
             </zone>
-            <zone h='92447' id='4' type-v2='layout-basic' w='98828' x='586' y='6511' />
+            <zone h='92875' id='4' type-v2='layout-basic' w='98400' x='800' y='6125' />
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{B42334E4-C41E-47AD-9037-287FD4920E32}' />
+    </dashboard>
+    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='jeden'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#e6e6e6' fontname='Tableau Regular' fontsize='12' italic='true' underline='true'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style />
+      <size maxheight='768' maxwidth='1366' minheight='768' minwidth='1366' preset-index='0' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97916' id='8' param='vert' type-v2='layout-flow' w='98828' x='586' y='1042'>
+            <zone h='3907' id='9' type-v2='title' w='98828' x='586' y='1042'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='94009' id='3' param='vert' type-v2='layout-flow' w='98828' x='586' y='4949'>
+              <zone h='94009' id='4' type-v2='layout-basic' w='98828' x='586' y='4949'>
+                <zone h='94009' id='6' name='Sheet 1' w='98828' x='586' y='4949'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
           </zone>
           <zone-style>
             <format attr='border-color' value='#000000' />
@@ -256,37 +270,22 @@
       </viewpoint>
       <simple-id uuid='{9F7A9F60-8909-4E54-9457-A6735F8D4344}' />
     </window>
-    <window class='dashboard' maximized='true' name='Dashboard 1'>
-      <viewpoints />
-      <active id='4' />
+    <window class='dashboard' name='jeden'>
+      <viewpoints>
+        <viewpoint name='Sheet 1'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='9' />
       <simple-id uuid='{8D8F5CD0-0F3E-4ADB-825F-D0C0A4D31EF6}' />
+    </window>
+    <window class='dashboard' maximized='true' name='dwa'>
+      <viewpoints />
+      <active id='-1' />
+      <simple-id uuid='{40EABC21-5840-4EA1-8AAE-F3C6EEF10968}' />
     </window>
   </windows>
   <thumbnails>
-    <thumbnail height='192' name='Dashboard 1' width='192'>
-      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
-      AAAEKklEQVR4nO3ZS08bVwBH8f/4BX5BKEmAIpKAqvb7f4V2XaWLoqiFkAJpeBQwD8fGYHu6
-      SErVRKnUSA2Lc36zsUeeudeWj3zHU5RlWUaCqtz3BKT7ZABCMwChGYDQPgrgl97z7Pd3snW5
-      nX+7Ou4Pd7I7vLh7vnn202dP4tfzzbvHl6PDfH/4w2efS/ovah/uGCdZ62xkMHqdnf5RvqpN
-      czUepFlbyEJ9JvuDgzSq7cwXZU6Hb1LeHmWpvZHbydvs91+lVm1nefZRDt6+yk1ZZrWzkavr
-      g/QnwzTri2kX4wymZU5G53naepjj614ubvt34w8nk3RrM1/yMxDYJ5dAzcbDXN+epVt/kEoq
-      +e1qO73hXiaVTlaay0mKLMwuZ605l93BSWrVVtY667kc/p6T4XbK2uOstZazc/ky3cbC+3Ns
-      ZXjzR7b6b/LN3EZeXu3mSXcj8/XO3bhLrdUURfEl3rv06QBOBntZaK7mxfnPWWk/S7s2m8X2
-      d/m6MZvnpz++O7j46/AyRYokZaZJ/v76lilT5sX5ZlbaT9OuziRFkfXut6mleL+9e5V0H4oP
-      b4S97m+lTC2NajdLzcUcD/Yzmk5SFvU8arRzfN1LtTKbx41mBmlmrjLO2bjMeHyam3KSVn0x
-      i435fyyBesO9jKbTpGhksT6TaWU+nVo9l6OjnN0MUqbIevdZUk5zONxPb3SRbuNBVlpPUvXH
-      QP+jjwKQSPwbVGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBCMwChGYDQ
-      DEBoBiA0AxCaAQjNAIRmAEIzAKEZgNAMQGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQ
-      mgEIzQCEZgBCMwChGYDQDEBoBiA0AxCaAQjNAIRmAEIzAKEZgNAMQGgGIDQDEJoBCM0AhGYA
-      QjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBCMwChGYDQDEBoBiA0AxCaAQjNAIRmAEIzAKEZgNAM
-      QGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBCMwChGYDQDEBoBiA0AxCa
-      AQjNAIRmAEIzAKEZgNAMQGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBC
-      MwChGYDQDEBoBiA0AxCaAQjNAIRmAEIzAKEZgNAMQGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxA
-      aAYgNAMQmgEIzQCEZgBCMwChGYDQDEBoBiA0AxCaAQjNAIRmAEIzAKEZgNAMQGgGIDQDEJoB
-      CM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBCMwChGYDQDEBoBiA0AxCaAQjNAIRmAEIz
-      AKEZgNAMQGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCE9ic408kbD2slgAAA
-      AABJRU5ErkJggg==
-    </thumbnail>
     <thumbnail height='192' name='Sheet 1' width='109'>
       iVBORw0KGgoAAAANSUhEUgAAAG0AAADACAYAAAAOeu1mAAAACXBIWXMAAA7DAAAOwwHHb6hk
       AAADAklEQVR4nO3XzYuNYRyH8e84FGdjM8RiynqyoJGyMgvR/AVTipQopNn4S1gRJRM2FgoL
@@ -304,6 +303,54 @@
       yGhARgMyGpDRgIwGZDQgowEZDchoQEYDMhqQ0YCMBmQ0IKMBGQ3IaEBGAzIakNGAjAZkNCCj
       ARkNyGhARgMyGpDRgIwGZDQgowEZDchoQEYDMhqQ0YCMBmQ0IKMBGQ3IaEBGAzIakNGAjAZk
       NCCjARkNyGhARgMyGpDRgL4BCb1rVr8OkPwAAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='192' name='dwa' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAADNElEQVR4nO3ZTYsWVBiA4WecCMUhS5roQxctBqQwGiLBYsBd21YtWodgP0X6D+1jRIqC
+      gdy4s1mEU8wuggSjDKEgdULrba3QTnqR+7qWZ/Uszs05h7OyWCwWA1GHlj0ALJMASBMAaQIg
+      7T8DuHjxk/9zDliKpx5duPrV9uzf/H1u/XEw31y5PM+/8d7s7Xw6p859OD/sXpl3ts7M9uWd
+      ufvXgzl/4cKsPe0Q4cn18O5d3Jlr3/88H5//aF44dnhOvrQ+u9/uzYOVQ7N/fW9u/PLrHHvm
+      +Kw/tza3b+zPdz/+tqSx4fF4OICV1Tm49+cc3Lszdw/uz8unNufm7hdz5MTZ+fv29Tly/NW5
+      9vWleXbj7Lx9emMW//hC4Mn2yBXo8Hzw/rnZ/nxn3t3amlk9Om9ubs7pt16bn1ZvzfrGmXnx
+      6P357NKX88qJ1+fk+tpypobHZMVPMGVesKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA
+      0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBN
+      AKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRA
+      mgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJ
+      gDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBI
+      EwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQB
+      kCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBp
+      AiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA
+      0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBN
+      AKQJgDQBkCYA0gRA2r9n/VXyMRmg2wAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='jeden' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAFL0lEQVR4nO3aXW8UZRyG8XtmX0tLaWGlNoAxhEYU0QgeeOBX8Ht6amL0wHBiMJhANQ1Q
+      BOS1vBRaaNe6293ZnefxAG1sUs22ZV/gvn5H7Wxm57/JXJlnZjeJMUYBptJhDwAMEwHAGgHA
+      GgFgJLXbbf379jTGoM3N1ms/TsJNMEZNjEGNRlOKUd0QVS6myrJMpUpVodtRWiyrk2VSkmjq
+      0OS+jsUVACOnm7WVJIk6eVClUlLWyZUWSso7maJSKeY6MH5ApVJ538cqvoZ5gdcm5F01Wx2N
+      jVUlSWlaULlcUpKmSlRUCFKaJoohV7Wy/wBYAsEaSyBYIwBYIwBYIwBY+88A6vU/BjkHMBTb
+      Arjy80VdvnxFdx480bXFxf/dMeRdLf5249U/Mer29QV98+0PfRsU6Idt3wOMVcp62exoZuYd
+      3bnxq36Zv6xmXlKh9VIqpDo8e1IPbl5XkiSaO/Oh5ufnNV2b1WxtSnMffaxHzy4O63MAe7Lt
+      CnD6k/P68ovPdenijxo/dETnzp1Xkrf0/NmKSpUJ5a0Vra61dXCiqrGJmk7NzWm2NjWs2YF9
+      23YFWLp7S6v1hj4486nUbUlKdOLEcb0/W9PTF3UdmTmlz84W1MyCDh6oaryYanl1XTNHJnXj
+      6oLy0NWj5VUdf7c2pI8D7A7fBMMaj0FhjQBgbde/Bo0xKoSgEIKSJOnHTMDA9BxADJl+v31X
+      R4+9r0MTr36qWigU+jYYMAi9L4GSkqanp6QY+jgOMFg9BxA7Dd1fWlZk2YO3yJ4fg+Z5zhII
+      bzyeAsEaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAa
+      AcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAa
+      AcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAa
+      AcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAaAcAa
+      AcAaAcAaAcAaAcDajgHEGHTr+oK+/+6Csq1tXd2793CAowH9V9xp4/qT+7r5cFmNjU0V/t6W
+      JEVVqyXFGBVCUAhBMcYBjro7j1Y2dGnx8bDHwIjbMYDpYyf11bGT6rbbW9tinunl6qqq45Oa
+      nhyXJBUKhZ12HwmPVzf09YVrwx4DI27HALZerFS2/k4KZZ05e7bvAwGDxE0wrBEArBEArBEA
+      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
+      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
+      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
+      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArPUc
+      QMxburqwoBf1Zj/nAQaq5wBCc02H3zutzT/X+zkPMFA9B5BOHFVz+Y6ma0f7OQ8wUEmMMe5m
+      hxijQggKIShNR/cWYul5XT9dXRr2GBhxuw7gH6MeANCLPZ/BnPwYtnxzQ09f1Pf1HpzFeGM9
+      XVlT1iAAWIrKWg2trW8o7ONd9nwPALwNuALAGgHAGgHA2l/jhTuDvZXkyQAAAABJRU5ErkJg
+      gg==
     </thumbnail>
   </thumbnails>
 </workbook>

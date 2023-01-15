@@ -165,6 +165,6 @@ export let formatWorkbook = (workbookXML) =>{
       dashboardStyleInstance = dashboardStyleFactory(axis,worksheet,dropline,refline,gridline,zeroline,trendline,title,dashTitle,storyTitle,tooltip,all)
 
     }
-    console.log(dashboardStyleInstance)
+
       
   }
