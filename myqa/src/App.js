@@ -55,14 +55,64 @@ const App = () => {
   }, [])
 
 
-
+let worksheetFormatWorksheetFactory = (wsname, cell,header,label,worksheet,title,tooltip) =>{
+  return {wsname, cell,header,label,worksheet,title,tooltip}
+}
 
   useEffect(() => {
     // formatDashboard(dashboardsXML)
     // formatWorkbook(workbookStyleXML)
-    formatWorksheetRC(worksheetsXML)
+    // formatWorksheetRC(worksheetsXML)
+    let worksheetFormat = (wsXML) =>{
+      if (wsXML){
+        let worksheets = wsXML.children
+        let worksheetsNameArr = []
+        let styleRuleWorksheet = 
+                                {'font-family':'default',
+                                'font-size':'default',
+                                'font-weight':'default',
+                                'font-style':'default',
+                                'font-decoration':'default',
+                                'color':'default',}
 
-  }, [dashboardsXML])
+        for (let a = 0;a<worksheets.length;a++){
+          let wsname = worksheets[a].attributes.name
+          let wsChildren = worksheets[a].children
+          console.log('--------------------------------')
+          for (let b = 0;b<wsChildren.length;b++){
+
+            if (wsChildren[b].name==='table'){
+              let tableChildren = wsChildren[b].children
+              for (let c = 0;c<tableChildren.length;c++){
+                // console.log(tableChildren[c])
+                if (tableChildren[c].name==='style'){
+                  let styleChildren = tableChildren[c].children
+                  for (let d = 0;d<styleChildren.length;d++){
+                    let styleRuleChildren = styleChildren[d].children
+                    let element = styleChildren[d].attributes.element
+                    if (element ==='worksheet'){
+                      for (let e = 0;e<styleRuleChildren.length;e++){
+                        let attr = styleRuleChildren[e].attributes.attr
+                        let value = styleRuleChildren[e].attributes.value
+                        console.log(attr,value)
+                       
+                      }
+                    }
+
+                  }
+                }
+              }
+            }
+            
+          }
+          
+        }
+      }
+      
+    }
+    worksheetFormat(worksheetsXML)
+
+  }, [worksheetsXML])
 
   // useEffect(() => {
   //   if (dashboardsXML) {
