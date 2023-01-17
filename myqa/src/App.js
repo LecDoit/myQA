@@ -1,11 +1,11 @@
 import XMLDATA from './twbx/test.twb'
 import React, { useState, useEffect, useMemo } from 'react'
 import axios from 'axios'
-// import { formatData } from './helpers'
 import {formatDashboard} from './functions/dashboardFormatFunc'
 import {formatWorkbook} from './functions/workbookFormatFunc'
 import {formatDashboardRC} from './functions/dashboardTitleRCFunc'
 import {formatWorksheetRC} from './functions/worksheetTitleRCFunc'
+import {formatWorksheet} from './functions/worksheetFormatFunc'
 
 
 const App = () => {
@@ -55,62 +55,17 @@ const App = () => {
   }, [])
 
 
-let worksheetFormatWorksheetFactory = (wsname, cell,header,label,worksheet,title,tooltip) =>{
-  return {wsname, cell,header,label,worksheet,title,tooltip}
-}
+
+
 
   useEffect(() => {
     // formatDashboard(dashboardsXML)
     // formatWorkbook(workbookStyleXML)
     // formatWorksheetRC(worksheetsXML)
-    let worksheetFormat = (wsXML) =>{
-      if (wsXML){
-        let worksheets = wsXML.children
-        let worksheetsNameArr = []
-        let styleRuleWorksheet = 
-                                {'font-family':'default',
-                                'font-size':'default',
-                                'font-weight':'default',
-                                'font-style':'default',
-                                'font-decoration':'default',
-                                'color':'default',}
 
-        for (let a = 0;a<worksheets.length;a++){
-          let wsname = worksheets[a].attributes.name
-          let wsChildren = worksheets[a].children
-          console.log('--------------------------------')
-          for (let b = 0;b<wsChildren.length;b++){
+    formatWorksheet(worksheetsXML)
 
-            if (wsChildren[b].name==='table'){
-              let tableChildren = wsChildren[b].children
-              for (let c = 0;c<tableChildren.length;c++){
-                // console.log(tableChildren[c])
-                if (tableChildren[c].name==='style'){
-                  let styleChildren = tableChildren[c].children
-                  for (let d = 0;d<styleChildren.length;d++){
-                    let styleRuleChildren = styleChildren[d].children
-                    let element = styleChildren[d].attributes.element
-                    if (element ==='worksheet'){
-                      for (let e = 0;e<styleRuleChildren.length;e++){
-                        let attr = styleRuleChildren[e].attributes.attr
-                        let value = styleRuleChildren[e].attributes.value
-                        console.log(attr,value)
-                       
-                      }
-                    }
 
-                  }
-                }
-              }
-            }
-            
-          }
-          
-        }
-      }
-      
-    }
-    worksheetFormat(worksheetsXML)
 
   }, [worksheetsXML])
 
@@ -142,23 +97,23 @@ let worksheetFormatWorksheetFactory = (wsname, cell,header,label,worksheet,title
 
   // console.log(dashboardsXML)
 
-  let printXML = () => {
-    var xmlRAW = new XMLParser().parseFromString(xml)
-    let dashboardsGet = xmlRAW.getElementsByTagName('dashboards')[0].children
+  // let printXML = () => {
+  //   var xmlRAW = new XMLParser().parseFromString(xml)
+  //   let dashboardsGet = xmlRAW.getElementsByTagName('dashboards')[0].children
 
-    setDashboardsXML(dashboardsGet)
+  //   setDashboardsXML(dashboardsGet)
 
 
 
-    let main = document.getElementById('roots')
-    main.innerText = JSON.stringify(dashboardsGet)
-    console.log(dashboards)
+  //   let main = document.getElementById('roots')
+  //   main.innerText = JSON.stringify(dashboardsGet)
+  //   console.log(dashboards)
 
-  }
+  // }
 
-  let checkState = () => {
-    console.log(dashboardsXML)
-  }
+  // let checkState = () => {
+  //   console.log(dashboardsXML)
+  // }
 
 
 
@@ -166,10 +121,10 @@ let worksheetFormatWorksheetFactory = (wsname, cell,header,label,worksheet,title
 
     <div className="App">
 
-      <button onClick={checkState}>load state</button>
+      {/* <button onClick={checkState}>load state</button> */}
       {/* <button onClick={checkState}>check state</button> */}
-      <div id='roots'></div>
-      <div id='xml'></div>
+      {/* <div id='roots'></div>
+      <div id='xml'></div> */}
       {/* <div>{xml.map}</div> */}
     </div>
   );
