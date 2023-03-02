@@ -207,7 +207,7 @@ if (wsXML){
     }
 
 
-    console.log(wsFormats)
+    // console.log(wsFormats)
 }
 
 }

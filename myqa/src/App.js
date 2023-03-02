@@ -6,6 +6,7 @@ import {formatWorkbook} from './functions/workbookFormatFunc'
 import {formatDashboardRC} from './functions/dashboardTitleRCFunc'
 import {formatWorksheetRC} from './functions/worksheetTitleRCFunc'
 import {formatWorksheet} from './functions/worksheetFormatFunc'
+import {dashboardSize} from './functions/dashboardSizeFunc'
 
 
 const App = () => {
@@ -55,19 +56,19 @@ const App = () => {
   }, [])
 
 
-
+  // const sizeFactory = (dashboard,maxheight,maxwidth,minheight,minwidth) => {
+  //   return { dashboard,maxheight,maxwidth,minheight,minwidth }
+  //   }
 
 
   useEffect(() => {
     // formatDashboard(dashboardsXML)
     // formatWorkbook(workbookStyleXML)
     // formatWorksheetRC(worksheetsXML)
-
-    formatWorksheet(worksheetsXML)
-
+    // dashboardSize(dashboardsXML)
 
 
-  }, [worksheetsXML])
+  }, [dashboardsXML])
 
   // useEffect(() => {
   //   if (dashboardsXML) {
@@ -115,7 +116,11 @@ const App = () => {
   //   console.log(dashboardsXML)
   // }
 
+  let sexik = ()=>{
 
+    let guwno = document.getElementById('gowno')
+    alert(guwno.value)
+  }
 
   return (
 
