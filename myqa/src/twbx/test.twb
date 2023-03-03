@@ -9,8 +9,10 @@
     <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
     <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
     <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SetMembershipControl />
     <SheetIdentifierTracking />
     <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
   </document-format-change-manifest>
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
@@ -106,8 +108,14 @@
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
+      <column aggregation='Sum' caption='A (copy)' datatype='integer' name='[A (copy)_1131810881830068224]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='[a]' />
+      </column>
+      <column aggregation='Sum' caption='C (copy)' datatype='integer' name='[C (copy)_1131810881885728769]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='[c]' />
+      </column>
       <_.fcp.ObjectModelTableType.true...column caption='Sheet1' datatype='table' name='[__tableau_internal_object_id__].[Sheet1_A514037FB4044ECA828CDD7421A3F5C2]' role='measure' type='quantitative' />
-      <column caption='A' datatype='integer' name='[a]' role='measure' type='quantitative' />
+      <column aggregation='Sum' caption='A' datatype='integer' name='[a]' role='dimension' type='ordinal' />
       <column caption='B' datatype='integer' name='[b]' role='measure' type='quantitative' />
       <column caption='C' datatype='integer' name='[c]' role='measure' type='quantitative' />
       <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
@@ -135,48 +143,144 @@
     <worksheet name='Sheet 1'>
       <table>
         <view>
-          <datasources />
+          <datasources>
+            <datasource caption='Sheet1 (data)' name='federated.05pueo107ducdh185ds851bq1mkh' />
+          </datasources>
+          <datasource-dependencies datasource='federated.05pueo107ducdh185ds851bq1mkh'>
+            <column aggregation='Sum' caption='A (copy)' datatype='integer' name='[A (copy)_1131810881830068224]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='[a]' />
+            </column>
+            <column aggregation='Sum' caption='C (copy)' datatype='integer' name='[C (copy)_1131810881885728769]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='[c]' />
+            </column>
+            <column aggregation='Sum' caption='A' datatype='integer' name='[a]' role='dimension' type='ordinal' />
+            <column caption='C' datatype='integer' name='[c]' role='measure' type='quantitative' />
+            <column-instance column='[A (copy)_1131810881830068224]' derivation='None' name='[none:A (copy)_1131810881830068224:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[C (copy)_1131810881885728769]' derivation='None' name='[none:C (copy)_1131810881885728769:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[a]' derivation='None' name='[none:a:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[c]' derivation='Sum' name='[sum:c:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.05pueo107ducdh185ds851bq1mkh].[none:A (copy)_1131810881830068224:ok]'>
+            <groupfilter function='member' level='[none:A (copy)_1131810881830068224:ok]' member='1' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.05pueo107ducdh185ds851bq1mkh].[none:C (copy)_1131810881885728769:ok]'>
+            <groupfilter function='member' level='[none:C (copy)_1131810881885728769:ok]' member='3' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.05pueo107ducdh185ds851bq1mkh].[none:a:ok]'>
+            <groupfilter function='member' level='[none:a:ok]' member='1' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.05pueo107ducdh185ds851bq1mkh].[none:a:ok]</column>
+            <column>[federated.05pueo107ducdh185ds851bq1mkh].[none:A (copy)_1131810881830068224:ok]</column>
+            <column>[federated.05pueo107ducdh185ds851bq1mkh].[none:C (copy)_1131810881885728769:ok]</column>
+          </slices>
           <aggregation value='true' />
         </view>
-        <style />
+        <style>
+          <style-rule element='quick-filter'>
+            <format attr='title' field='[federated.05pueo107ducdh185ds851bq1mkh].[none:a:ok]' value='A'>
+              <formatted-text>
+                <run bold='true' fontalignment='1' fontcolor='#666666' fontname='Tahoma' fontsize='72' italic='true' underline='true'>A</run>
+              </formatted-text>
+            </format>
+            <format attr='title' field='[federated.05pueo107ducdh185ds851bq1mkh].[none:A (copy)_1131810881830068224:ok]' value='A (copy)'>
+              <formatted-text>
+                <run bold='true' fontalignment='2' fontcolor='#d4d4d4' fontname='Unispace' fontsize='48' italic='true' underline='true'>A (copy)</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.05pueo107ducdh185ds851bq1mkh].[sum:c:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
           </pane>
         </panes>
-        <rows />
+        <rows>[federated.05pueo107ducdh185ds851bq1mkh].[none:a:ok]</rows>
         <cols />
       </table>
       <simple-id uuid='{8AC58E83-410A-49B6-8178-0A4EE1EFD1FB}' />
     </worksheet>
   </worksheets>
   <dashboards>
-    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Default'>
+    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Dashboard 1'>
       <style />
       <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
-      <zones />
-      <simple-id uuid='{28D81517-4495-4EB5-900E-DAED93B0F2DE}' />
-    </dashboard>
-    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Range'>
-      <style />
-      <size maxheight='800' maxwidth='1200' minheight='700' minwidth='1100' sizing-mode='range' />
-      <zones />
-      <simple-id uuid='{919A8AB2-37FD-44DC-B961-A151E55A405B}' />
-    </dashboard>
-    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='automatic'>
-      <style />
-      <size sizing-mode='automatic' />
-      <zones />
-      <simple-id uuid='{FE5382E5-9BB7-4672-9F86-54FF316011A0}' />
-    </dashboard>
-    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='fixed generic desktop'>
-      <style />
-      <size maxheight='768' maxwidth='1366' minheight='768' minwidth='1366' preset-index='0' sizing-mode='fixed' />
-      <zones />
-      <simple-id uuid='{7F1C04C5-5EC8-4376-BDAB-9F3BBAB97DD4}' />
+      <datasources>
+        <datasource caption='Sheet1 (data)' name='federated.05pueo107ducdh185ds851bq1mkh' />
+      </datasources>
+      <datasource-dependencies datasource='federated.05pueo107ducdh185ds851bq1mkh'>
+        <column aggregation='Sum' caption='A (copy)' datatype='integer' name='[A (copy)_1131810881830068224]' role='dimension' type='ordinal'>
+          <calculation class='tableau' formula='[a]' />
+        </column>
+        <column aggregation='Sum' caption='C (copy)' datatype='integer' name='[C (copy)_1131810881885728769]' role='dimension' type='ordinal'>
+          <calculation class='tableau' formula='[c]' />
+        </column>
+        <column aggregation='Sum' caption='A' datatype='integer' name='[a]' role='dimension' type='ordinal' />
+        <column-instance column='[A (copy)_1131810881830068224]' derivation='None' name='[none:A (copy)_1131810881830068224:ok]' pivot='key' type='ordinal' />
+        <column-instance column='[C (copy)_1131810881885728769]' derivation='None' name='[none:C (copy)_1131810881885728769:ok]' pivot='key' type='ordinal' />
+        <column-instance column='[a]' derivation='None' name='[none:a:ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='5' param='horz' type-v2='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='98000' id='3' type-v2='layout-basic' w='82400' x='800' y='1000'>
+              <zone h='98000' id='1' name='Sheet 1' w='82400' x='800' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='98000' id='4' is-fixed='true' param='vert' type-v2='layout-flow' w='16000' x='83200' y='1000'>
+              <zone h='21125' id='6' name='Sheet 1' param='[federated.05pueo107ducdh185ds851bq1mkh].[none:a:ok]' type-v2='filter' w='16000' x='83200' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='16250' id='7' name='Sheet 1' param='[federated.05pueo107ducdh185ds851bq1mkh].[none:A (copy)_1131810881830068224:ok]' type-v2='filter' values='database' w='16000' x='83200' y='22125'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='8750' id='8' name='Sheet 1' param='[federated.05pueo107ducdh185ds851bq1mkh].[none:C (copy)_1131810881885728769:ok]' type-v2='filter' values='database' w='16000' x='83200' y='38375'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{8E94A591-88E0-482D-8A2D-F0E2F0C27CFE}' />
     </dashboard>
   </dashboards>
   <windows source-height='30'>
@@ -200,100 +304,64 @@
             <card type='title' />
           </strip>
         </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.05pueo107ducdh185ds851bq1mkh].[none:a:ok]' type='filter' />
+          </strip>
+        </edge>
       </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.05pueo107ducdh185ds851bq1mkh].[none:A (copy)_1131810881830068224:ok]</field>
+            <field>[federated.05pueo107ducdh185ds851bq1mkh].[none:C (copy)_1131810881885728769:ok]</field>
+            <field>[federated.05pueo107ducdh185ds851bq1mkh].[none:a:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
       <simple-id uuid='{25050500-098F-40DE-B965-265FC4427CA9}' />
     </window>
-    <window class='dashboard' name='Default'>
-      <viewpoints />
+    <window class='dashboard' maximized='true' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Sheet 1' />
+      </viewpoints>
       <active id='-1' />
-      <simple-id uuid='{38D5F11C-A1C3-47C0-9EC3-895AEDECC00D}' />
-    </window>
-    <window class='dashboard' name='automatic'>
-      <viewpoints />
-      <active id='-1' />
-      <simple-id uuid='{AB0FBE2D-14FA-4917-BAAB-72FA9715800F}' />
-    </window>
-    <window class='dashboard' name='Range'>
-      <viewpoints />
-      <active id='-1' />
-      <simple-id uuid='{5E5613EF-2D87-4A6D-BA03-F905E742DC59}' />
-    </window>
-    <window class='dashboard' maximized='true' name='fixed generic desktop'>
-      <viewpoints />
-      <active id='-1' />
-      <simple-id uuid='{B820B8BA-CF92-4856-8F08-464B61BF3A09}' />
+      <simple-id uuid='{2116E341-C309-48BA-B65A-318BF96B1C72}' />
     </window>
   </windows>
   <thumbnails>
-    <thumbnail height='192' name='Default' width='192'>
+    <thumbnail height='192' name='Dashboard 1' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
-      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
-      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
-      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
-      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
-      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
-      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
-      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
-      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
-      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
-      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
-      fBUOM1sAAAAASUVORK5CYII=
+      AAADmUlEQVR4nO3aT4uVZRjA4XuspsSGMTAqNdLQTRBRRpvoa/Q1w32r/mhmaKVNRmg2juOU
+      hdkwFFLYpqjBRWA1I/2ua3c4vJz7WfzO+z7nOQt37969OxC1Z7cHgN0kANIEQJoASBMAadsC
+      uHljdc6e/Wgur96YC5+t/O3Ft3+8/ee166vz8cVL//6E8B/aFsAnF7+Yl0+cmKOHn5qNtatz
+      7txHc/X6t7Nx7as588GZ2brz63y58umcPX9hbt1cn5Mn35r1m7dmZmZx3/Lc+ubGriwC7tfD
+      f33xxuuvzYen35vFxw/M3qX988orr877p0/PxtdX5rnnj8ypd9+e9dUf5umlO/Pds2/O8ePH
+      5+CTT8zMzPLy8q4sAP6JbXeA69fWZvHRvfPzz1uzsPDHWwtz+PChmYcemxdfenkOPbN/Dhx9
+      YQ4uPTy3vt2YG7/fAT6/cH4uX7k8q+s3d3oNcN8WnART5lcg0gRAmgBIEwBpAiBNAKQJgLRt
+      J8Gbm5u7Ncc9lpaWdnsEAhyEkXbPI9CdrdvzzqkzuzHLrKyszKVL/lHKzrkngMV9y/PInl92
+      Y5Y5cuTIA/UYxv/fPQFs3f5+Fh95bDZ/2vkI1tbW5tixYzv+uXRt2wM8SN++NsHsBJtg0pwD
+      kCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBp
+      AiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA
+      0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBN
+      AKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRA
+      mgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJ
+      gDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBI
+      EwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQB
+      kCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBp
+      AiBNAKT9BrI4jeRFQa77AAAAAElFTkSuQmCC
     </thumbnail>
-    <thumbnail height='192' name='Range' width='192'>
-      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
-      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
-      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
-      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
-      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
-      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
-      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
-      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
-      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
-      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
-      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
-      fBUOM1sAAAAASUVORK5CYII=
-    </thumbnail>
-    <thumbnail height='192' name='Sheet 1' width='192'>
-      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
-      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
-      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
-      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
-      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
-      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
-      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
-      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
-      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
-      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
-      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
-      fBUOM1sAAAAASUVORK5CYII=
-    </thumbnail>
-    <thumbnail height='192' name='automatic' width='192'>
-      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
-      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
-      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
-      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
-      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
-      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
-      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
-      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
-      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
-      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
-      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
-      fBUOM1sAAAAASUVORK5CYII=
-    </thumbnail>
-    <thumbnail height='192' name='fixed generic desktop' width='192'>
-      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
-      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
-      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
-      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
-      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
-      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
-      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
-      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
-      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
-      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
-      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
-      fBUOM1sAAAAASUVORK5CYII=
+    <thumbnail height='44' name='Sheet 1' width='144'>
+      iVBORw0KGgoAAAANSUhEUgAAAJAAAAAsCAYAAACKTjG2AAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAABsElEQVR4nO3cvYoaURyG8XcllVNYWccZFHIBNmHYrdVtAlt6B2uXCzCkSRmQWKSVBTG3
+      YBAh6QYFG4utFqdULGxcxIDpLAJJ1n0l65Ln181H8S8eOIc5MGe73W4n4JEyTz0AnjcCgoWA
+      YCEgWAgIFgKChYBgISBYCAgWAoKFgGAhIFgICBYCgoWAYCEgWAgIFgKChYBgISBYCAgWAoKF
+      gGAhIFgICBYCgoWAYHnxtxdGo9G/mAPP1Bk/V4CDJQwWAoKFgGAhIFisgH6s7/S980HXb85V
+      78yONRNOyHK5VLPZVBzHKpfLqlarGg6H++dGQDN9edvUV53r9av7I4yKU7RarRTHsfr9vpIk
+      UavVUrfbVZqmkh7wHej3Xqr++UaS9O3dMUbFKYqiSFEU7a+LxaIKhYI2m40kKyD8bxaLhXq9
+      noIgUBiGkthE4wDZbFalUknz+Vzr9VoSAeEAQRCoUqkoDMP9ERcB4Y8Gg4GSJNnvedI01Xg8
+      Vi6Xk+Schc06ql990u2v9y8/avT+whgZp2Q6nardbmsymWi73Sqfz6vRaKhWqymTyXCYCg9L
+      GCw/ATa/a2Y3yDj3AAAAAElFTkSuQmCC
     </thumbnail>
   </thumbnails>
 </workbook>
