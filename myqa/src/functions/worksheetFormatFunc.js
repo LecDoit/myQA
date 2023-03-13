@@ -107,7 +107,7 @@ if (wsXML){
                 headerTotalArr.push(styleRuleHeaderTotalInstance)
                 headerSubTotalArr.push(styleRuleHeaderSubTotalInstance)
 
-                let worksheetFormatInstance = worksheetFormatFactory(wsname,styleRuleWorksheetInstance,styleRuleCellInstance,styleRuleCellSubTotalInstance,styleRuleCellTotalInstance,styleRuleLabelInstance,styleRuleTooltipInstance,styleRuleTitleInstance,styleRuleHeaderTotalInstance,styleRuleHeaderSubTotalInstance,) 
+                let worksheetFormatInstance = worksheetFormatFactory(wsname,styleRuleWorksheetInstance,styleRuleCellInstance,styleRuleCellSubTotalInstance,styleRuleCellTotalInstance,styleRuleLabelInstance,styleRuleTooltipInstance,styleRuleTitleInstance,styleRuleHeaderTotalInstance,styleRuleHeaderSubTotalInstance) 
                 wsFormats.push(worksheetFormatInstance)
 
             } else {

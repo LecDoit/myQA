@@ -9,6 +9,7 @@ import {formatWorksheet} from './functions/worksheetFormatFunc'
 import {dashboardSize} from './functions/dashboardSizeFunc'
 import {wsFilterListFunc} from './functions/filterListFunc'
 import {filterTitleRC} from './functions/filterTitleRCFunc'
+import {worksheetFormatFilters} from './functions/worksheetFilterFormat'
 
 
 const App = () => {
@@ -69,7 +70,10 @@ const App = () => {
     // formatWorkbook(workbookStyleXML)
     // formatWorksheetRC(worksheetsXML)
     // dashboardSize(dashboardsXML)
-    filterTitleRC(worksheetsXML)
+    // filterTitleRC(worksheetsXML)
+
+
+worksheetFormatFilters(worksheetsXML)
 
   }, [worksheetsXML])
 

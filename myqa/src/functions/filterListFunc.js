@@ -27,15 +27,9 @@ let filterFactory = (wsname,field) =>{
                     let filterNameInstance = filterFactory(wsname,column)
                     wsFiltersArr.push(filterNameInstance)
                   }
-          
                 }
-
               }
-
             }
-
-            
-
           }
         }
         
