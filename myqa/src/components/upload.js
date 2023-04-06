@@ -64,7 +64,7 @@ export const UploadNav = () =>{
         <div>
             <div>File Reader</div>
             <input type='file' onChange={handleFileChange}></input>
-            <DbRCTable></DbRCTable>
+            <DbRCTable data={dashboardsXML}></DbRCTable>
             
         </div>
     )

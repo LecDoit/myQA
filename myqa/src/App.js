@@ -223,9 +223,9 @@ const App = () => {
   return (
 
     <div className="App">
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
       <UploadNav></UploadNav>
-      <AnimationNav></AnimationNav>
+      {/* <AnimationNav></AnimationNav> */}
     </div>
   );
 }

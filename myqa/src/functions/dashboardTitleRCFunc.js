@@ -65,6 +65,7 @@ let dashboardTitleRCFactory = (dbname,bold,fontalignment,fontcolor,fontname,font
         dashboardTitleRCInstanceArr.push(dashboardTitleRCInstance)
       }
       console.log(dashboardTitleRCInstanceArr)
+      return dashboardTitleRCInstanceArr
     }
     
   }
