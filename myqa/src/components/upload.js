@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import axios from 'axios'
 import {DbRCTable} from './dbRCTable'
+import {WsRCTable} from './wsRCTable'
+import {WbTable} from './wbTable'
 var XMLParser = require('react-xml-parser')
 
 
@@ -40,15 +42,24 @@ export const UploadNav = () =>{
 
             let xmlDOM = new DOMParser().parseFromString(file, "text/xml");
             setXMLDOM(xmlDOM)
+    
 
             let workbookXMLGet= (xmlRAW.getElementsByTagName('workbook')[0].children)
+
             for (let a = 0;a<workbookXMLGet.length;a++){
               if ((workbookXMLGet[a].name)==='style'){
                 setWorkbookStyleXML(workbookXMLGet[a])
+                return
+              } else{
+                       setWorkbookStyleXML('empty')
               }
     
             }
-    
+
+            if (workbookStyleXML===null)  {
+                // setWorkbookStyleXML('empty')
+                console.log('its bomboclat empty')
+            }
             let dashboardsXMLGet = xmlRAW.getElementsByTagName('dashboards')[0]
             setDashboardsXML(dashboardsXMLGet)
     
@@ -64,8 +75,9 @@ export const UploadNav = () =>{
         <div>
             <div>File Reader</div>
             <input type='file' onChange={handleFileChange}></input>
-            <DbRCTable data={dashboardsXML}></DbRCTable>
-            
+            {/* <DbRCTable data={dashboardsXML}></DbRCTable>
+            <WsRCTable data={worksheetsXML}></WsRCTable> */}
+            <WbTable data={workbookStyleXML}></WbTable>
         </div>
     )
 }

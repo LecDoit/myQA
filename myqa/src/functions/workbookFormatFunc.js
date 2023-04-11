@@ -5,6 +5,7 @@ return {axis, worksheet,dropline,refline,gridline,zeroline,trendline,title,dashT
 
 
 export let formatWorkbook = (workbookXML) =>{
+
     let dashboardStyleInstance
     let axis = {"stroke-color":'default',
     "stroke-size":'default',
@@ -62,7 +63,8 @@ export let formatWorkbook = (workbookXML) =>{
                   'font-weight':'default'}
     let all = {'font-family':'default',
             'color':'default'}
-    if (workbookXML){
+    if (workbookXML && workbookXML!='empty' ){
+
       let styleRuleArr = (workbookXML.children)
 
 
@@ -164,7 +166,8 @@ export let formatWorkbook = (workbookXML) =>{
     } else {
       dashboardStyleInstance = dashboardStyleFactory(axis,worksheet,dropline,refline,gridline,zeroline,trendline,title,dashTitle,storyTitle,tooltip,all)
 
-    }
 
-      
+    }
+    // console.log(dashboardStyleInstance)
+    return dashboardStyleInstance
   }

@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import {formatDashboardRC} from '../functions/dashboardTitleRCFunc'
 
-export const DbRCTable = ({data}) =>{
+import {formatWorkbook} from '../functions/workbookFormatFunc'
+import {dashboardSize} from '../functions/dashboardSizeFunc'
 
-    const [stateRC,setstateRC] = useState(null)
+export const WbTable = ({data}) =>{
+
+    const [formatWorkbookState,setformatWorkbookState] = useState(null)
+    const [dashboardSizeState,setdashboardSizeState] = useState(null)
 
 
     useEffect(()=>{
         if (data){
-            setstateRC(formatDashboardRC(data))
- 
+            setformatWorkbookState(formatWorkbook(data))
+            // setdashboardSize(dashboardSize(data))
+            // console.log(data)
 
         } else{
             console.log('data is empty')
@@ -18,12 +22,12 @@ export const DbRCTable = ({data}) =>{
     
 
     useEffect(()=>{
-        if(stateRC){
-
-            console.log(stateRC)
+        if(formatWorkbookState){
+            console.log(formatWorkbookState)
+            
 
         }
-    },[stateRC])
+    },[formatWorkbookState])
 
     let renderTableHeader = (arg)=>{
         if (arg){
@@ -46,7 +50,7 @@ export const DbRCTable = ({data}) =>{
             return (
          
                 <div className='table--content' key={key}>
-                    <div>{value.dbname}</div>
+                    <div>{value.wsname}</div>
                     <div>{value.bold}</div>
                     <div>{value.fontalignment}</div>
                     <div>{value.fontcolor}</div>
@@ -64,11 +68,9 @@ export const DbRCTable = ({data}) =>{
     return(
        
         <div className='table'>
-            <div className='table--header'>{renderTableHeader(stateRC)}</div>
-            <div>
-          { renderTableContent(stateRC)}
-          </div>
-
+            {/* <div className='table--header'>{renderTableHeader(formatWorkbook)}</div>
+            <div>{renderTableContent(formatWorkbook)}</div> */}
+{/* <div>{formatWorkbookState}</div> */}
         </div>
     )
 

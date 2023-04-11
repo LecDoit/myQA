@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import {formatDashboardRC} from '../functions/dashboardTitleRCFunc'
+import {formatWorksheetRC} from '../functions/worksheetTitleRCFunc'
 
-export const DbRCTable = ({data}) =>{
+export const WsRCTable = ({data}) =>{
 
     const [stateRC,setstateRC] = useState(null)
 
 
     useEffect(()=>{
         if (data){
-            setstateRC(formatDashboardRC(data))
- 
+            setstateRC(formatWorksheetRC(data))
+            console.log(stateRC)
 
         } else{
             console.log('data is empty')
@@ -46,7 +46,7 @@ export const DbRCTable = ({data}) =>{
             return (
          
                 <div className='table--content' key={key}>
-                    <div>{value.dbname}</div>
+                    <div>{value.wsname}</div>
                     <div>{value.bold}</div>
                     <div>{value.fontalignment}</div>
                     <div>{value.fontcolor}</div>
@@ -65,9 +65,7 @@ export const DbRCTable = ({data}) =>{
        
         <div className='table'>
             <div className='table--header'>{renderTableHeader(stateRC)}</div>
-            <div>
-          { renderTableContent(stateRC)}
-          </div>
+            <div>{renderTableContent(stateRC)}</div>
 
         </div>
     )

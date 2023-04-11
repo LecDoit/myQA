@@ -1,5 +1,5 @@
-let dashboardTitleRCFactory = (dbname,bold,fontalignment,fontcolor,fontname,fontsize,italic,value)=>{
-    return {dbname,bold,fontalignment,fontcolor,fontname,fontsize,italic,value}
+let dashboardTitleRCFactory = (dbname,bold,fontalignment,fontcolor,fontname,fontsize,italic,underline,value)=>{
+    return {dbname,bold,fontalignment,fontcolor,fontname,fontsize,italic,underline,value}
   }
 
 
@@ -11,7 +11,7 @@ let dashboardTitleRCFactory = (dbname,bold,fontalignment,fontcolor,fontname,font
       for (let a = 0;a<dbXMLarg.children.length;a++){
 
         let dbname = dbXMLarg.children[a].attributes.name
-        let dashboardTitleRCInstance = dashboardTitleRCFactory(dbname,'default','default','default','default','default','default','default')
+        let dashboardTitleRCInstance = dashboardTitleRCFactory(dbname,'default','default','default','default','default','default','default','Sheet Name')
 
         let dashboardChildren = (dbXMLarg.children[a].children)
         for (let b = 0;b<dashboardChildren.length;b++) {
@@ -64,7 +64,7 @@ let dashboardTitleRCFactory = (dbname,bold,fontalignment,fontcolor,fontname,font
         }
         dashboardTitleRCInstanceArr.push(dashboardTitleRCInstance)
       }
-      console.log(dashboardTitleRCInstanceArr)
+      // console.log(dashboardTitleRCInstanceArr)
       return dashboardTitleRCInstanceArr
     }
     

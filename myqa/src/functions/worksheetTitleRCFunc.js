@@ -1,5 +1,5 @@
-let worksheetTitleRCFactory = (wsname,bold,fontalignment,fontcolor,fontname,fontsize,italic,value)=>{
-    return {wsname,bold,fontalignment,fontcolor,fontname,fontsize,italic,value}
+let worksheetTitleRCFactory = (wsname,bold,fontalignment,fontcolor,fontname,fontsize,italic,underline,value)=>{
+    return {wsname,bold,fontalignment,fontcolor,fontname,fontsize,italic,underline,value}
   }
 
 
@@ -11,7 +11,7 @@ let worksheetTitleRCFactory = (wsname,bold,fontalignment,fontcolor,fontname,font
       for (let a = 0;a<dbXMLarg.children.length;a++){
 
         let wsname = dbXMLarg.children[a].attributes.name
-        let worksheetTitleRCInstance = worksheetTitleRCFactory(wsname,'default','default','default','default','default','default','default')
+        let worksheetTitleRCInstance = worksheetTitleRCFactory(wsname,'default','default','default','default','default','default','default','Sheet Name')
 
         let worksheetChildren = (dbXMLarg.children[a].children)
         for (let b = 0;b<worksheetChildren.length;b++) {
@@ -64,7 +64,8 @@ let worksheetTitleRCFactory = (wsname,bold,fontalignment,fontcolor,fontname,font
         }
         worksheetTitleRCInstanceArr.push(worksheetTitleRCInstance)
       }
-      console.log(worksheetTitleRCInstanceArr)
+      // console.log(worksheetTitleRCInstanceArr)
+      return worksheetTitleRCInstanceArr
     }
     
   }
