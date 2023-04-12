@@ -9,6 +9,7 @@ export let dashboardSize = (xmlArg) =>{
     let dashSizeInstanceArr = []
 
     if (xmlArg){
+
         for (let a = 0 ; a< xmlArg.children.length; a++){
         let dbname = (xmlArg.children[a].attributes.name)
         let dashboardChildren = xmlArg.children[a].children
@@ -31,7 +32,9 @@ export let dashboardSize = (xmlArg) =>{
             }
         }
         }
-        console.log(dashSizeInstanceArr)
+
     }
+
+    return dashSizeInstanceArr
 
     }

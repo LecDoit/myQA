@@ -3,6 +3,7 @@ import axios from 'axios'
 import {DbRCTable} from './dbRCTable'
 import {WsRCTable} from './wsRCTable'
 import {WbTable} from './wbTable'
+import { DbSize } from './dbSize'
 var XMLParser = require('react-xml-parser')
 
 
@@ -45,8 +46,16 @@ export const UploadNav = () =>{
     
 
             let workbookXMLGet= (xmlRAW.getElementsByTagName('workbook')[0].children)
+            let dashboardsXMLGet = xmlRAW.getElementsByTagName('dashboards')[0]
 
+            setDashboardsXML(dashboardsXMLGet)
+    
+            let worksheetsXMLGet = xmlRAW.getElementsByTagName('worksheets')[0]
+            setWorksheetsXML(worksheetsXMLGet)
+
+                
             for (let a = 0;a<workbookXMLGet.length;a++){
+
               if ((workbookXMLGet[a].name)==='style'){
                 setWorkbookStyleXML(workbookXMLGet[a])
                 return
@@ -55,16 +64,7 @@ export const UploadNav = () =>{
               }
     
             }
-
-            if (workbookStyleXML===null)  {
-                // setWorkbookStyleXML('empty')
-                console.log('its bomboclat empty')
-            }
-            let dashboardsXMLGet = xmlRAW.getElementsByTagName('dashboards')[0]
-            setDashboardsXML(dashboardsXMLGet)
-    
-            let worksheetsXMLGet = xmlRAW.getElementsByTagName('worksheets')[0]
-            setWorksheetsXML(worksheetsXMLGet)
+   
 
 
             }
@@ -78,6 +78,7 @@ export const UploadNav = () =>{
             <DbRCTable data={dashboardsXML}></DbRCTable>
             <WsRCTable data={worksheetsXML}></WsRCTable>
             <WbTable data={workbookStyleXML}></WbTable>
+            <DbSize data={dashboardsXML}></DbSize>
         </div>
     )
 }
