@@ -4,6 +4,7 @@ import {DbRCTable} from './dbRCTable'
 import {WsRCTable} from './wsRCTable'
 import {WbTable} from './wbTable'
 import { DbSize } from './dbSize'
+import { DbFormatTable } from './dbFormatTable'
 var XMLParser = require('react-xml-parser')
 
 
@@ -75,10 +76,19 @@ export const UploadNav = () =>{
         <div>
             <div>File Reader</div>
             <input type='file' onChange={handleFileChange}></input>
-            <DbRCTable data={dashboardsXML}></DbRCTable>
-            <WsRCTable data={worksheetsXML}></WsRCTable>
-            <WbTable data={workbookStyleXML}></WbTable>
-            <DbSize data={dashboardsXML}></DbSize>
+
+                {/* dashboardTitleRCFunc */}
+                {/* <DbRCTable data={dashboardsXML}></DbRCTable> */}
+                {/* worksheetTitleRCFunc */}
+                {/* <WsRCTable data={worksheetsXML}></WsRCTable> */}
+                {/* workbookFormatFunc */}
+                {/* <WbTable data={workbookStyleXML}></WbTable> */}
+                {/* dashboardSizeFunc */}
+                {/* <DbSize data={dashboardsXML}></DbSize> */}
+
+
+
+            <DbFormatTable data={dashboardsXML}></DbFormatTable>
         </div>
     )
 }

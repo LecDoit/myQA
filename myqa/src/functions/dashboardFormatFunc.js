@@ -1,16 +1,20 @@
-const dashTitleFactory = (fontWeight, fontStyle, textDecoration, fontFamily, fontSize, color, textAlign, backgroundColor, borderWidth, borderColor, borderStyle) => {
-return { fontWeight, fontStyle, textDecoration, fontFamily, fontSize, color, textAlign, backgroundColor, borderWidth, borderColor, borderStyle }
+const dashTitleFactory = (dbname,fontWeight, fontStyle, textDecoration, fontFamily, fontSize, color, textAlign, backgroundColor, borderWidth, borderColor, borderStyle) => {
+return {dbname, fontWeight, fontStyle, textDecoration, fontFamily, fontSize, color, textAlign, backgroundColor, borderWidth, borderColor, borderStyle }
 }
-const dashSubTitleFactory = (fontWeight, fontStyle, textDecoration, fontFamily, fontSize, color, backgroundColor) => {
-return { fontWeight, fontStyle, textDecoration, fontFamily, fontSize, color, backgroundColor }
-}
-
-const dashTextFactory = (fontFamily, fontSize, fontWeight, fontStyle, textDecoration, color, textAlign, textOrientation, verticalAlign, wrap) => {
-return { fontFamily, fontSize, fontWeight, fontStyle, textDecoration, color, textAlign, textOrientation, verticalAlign, wrap }
+const dashSubTitleFactory = (dbname,fontWeight, fontStyle, textDecoration, fontFamily, fontSize, color, backgroundColor) => {
+return {dbname, fontWeight, fontStyle, textDecoration, fontFamily, fontSize, color, backgroundColor }
 }
 
-const tableFactory = (backgroundColor) => {
-return { backgroundColor }
+const dashTextFactory = (dbname,fontFamily, fontSize, fontWeight, fontStyle, textDecoration, color, textAlign, textOrientation, verticalAlign, wrap) => {
+return {dbname, fontFamily, fontSize, fontWeight, fontStyle, textDecoration, color, textAlign, textOrientation, verticalAlign, wrap }
+}
+
+const tableFactory = (dbname, backgroundColor) => {
+return {dbname, backgroundColor }
+}
+
+const formatDashbordObject = (dashTitle,dashSubTitle,dashText,table) =>{
+  return {dashTitle,dashSubTitle,dashText,table}
 }
 
 export let formatDashboard = (xmlArg)=>{
@@ -46,10 +50,10 @@ export let formatDashboard = (xmlArg)=>{
             //check if style exist in dashboard, if not than default to all 4 items
             if (style.length == 0) {
 
-              let dashTableInstance = tableFactory('Default')
-              let dashTitleInstance = dashTitleFactory('Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default',)
-              let dashSubTitleInstance = dashSubTitleFactory('Default','Default','Default','Default','Default','Default','Default')
-              let dashTextInstance = dashTextFactory('Default','Default','Default','Default','Default','Default','Default','Default','Default')
+              let dashTableInstance = tableFactory(dbname,'Default')
+              let dashTitleInstance = dashTitleFactory(dbname, 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default',)
+              let dashSubTitleInstance = dashSubTitleFactory(dbname,'Default','Default','Default','Default','Default','Default','Default')
+              let dashTextInstance = dashTextFactory(dbname,'Default','Default','Default','Default','Default','Default','Default','Default','Default')
 
               tableInstanceArr.push(dashTableInstance)
               dashTitleInstanceArr.push(dashTitleInstance)
@@ -59,10 +63,10 @@ export let formatDashboard = (xmlArg)=>{
             } else {
               //style exist so lets scrap
               // we have to setup the default instance and change if the value exist in XML
-              let TableInstance = tableFactory('Default')
-              let dashTitleInstance = dashTitleFactory('Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default',)
-              let dashSubTitleInstance = dashSubTitleFactory('Default','Default','Default','Default','Default','Default','Default')
-              let dashTextInstance = dashTextFactory('Default','Default','Default','Default','Default','Default','Default','Default','Default')
+              let TableInstance = tableFactory(dbname,'Default')
+              let dashTitleInstance = dashTitleFactory(dbname,'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default',)
+              let dashSubTitleInstance = dashSubTitleFactory(dbname,'Default','Default','Default','Default','Default','Default','Default')
+              let dashTextInstance = dashTextFactory(dbname,'Default','Default','Default','Default','Default','Default','Default','Default','Default')
 
 
               for (let a = 0; a < style.length; a++) {
@@ -277,5 +281,7 @@ export let formatDashboard = (xmlArg)=>{
         }
 
       }
+      let dbFormatObj = formatDashbordObject(dashTitleInstanceArr,dashSubTitleInstanceArr,dashTextInstanceArr,tableInstanceArr)
+      return dbFormatObj
     
     }
