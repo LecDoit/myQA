@@ -1,77 +1,88 @@
 import React, { useState, useEffect, useMemo } from 'react'
 
 import {formatWorkbook} from '../functions/workbookFormatFunc'
-import {dashboardSize} from '../functions/dashboardSizeFunc'
+
 
 export const WbTable = ({data}) =>{
 
     const [formatWorkbookState,setformatWorkbookState] = useState(null)
-    const [dashboardSizeState,setdashboardSizeState] = useState(null)
-
 
     useEffect(()=>{
         if (data){
             setformatWorkbookState(formatWorkbook(data))
-            // setdashboardSize(dashboardSize(data))
-            // console.log(data)
 
-        } else{
-            console.log('data is empty')
+        
         }
     },[data])
     
 
-    useEffect(()=>{
-        if(formatWorkbookState){
-            console.log(formatWorkbookState)
-            
-
-        }
-    },[formatWorkbookState])
-
-    let renderTableHeader = (arg)=>{
+    let renderAllTableContent= (arg,arg2)=>{
         if (arg){
-            let arg2 = arg[0]
-            console.log(Object.keys(arg2))
-            return Object.keys(arg2).map((obj,i)=>{
-                
-                return (
-                    <div key={obj}>
-                        {obj}
-                    </div>
-                )
-            })
-        }
-    }
-
-    let renderTableContent= (arg)=>{
-        if (arg){
-        return Object.entries(arg).map(([key,value],i)=>{
+      
+        return Object.entries(arg[arg2]).map(([key,value],i)=>{
             return (
          
-                <div className='table--content' key={key}>
-                    <div>{value.wsname}</div>
-                    <div>{value.bold}</div>
-                    <div>{value.fontalignment}</div>
-                    <div>{value.fontcolor}</div>
-                    <div>{value.fontname}</div>
-                    <div>{value.fontsize}</div>
-                    <div>{value.italic}</div>
-                    <div>{value.underline}</div>
-                    <div>{value.value}</div>
+                <div className='table--header' key={key}>
+                    <div>{key}</div>
+                    <div>{value}</div>
+                    
                 </div>
             )
         })
         }
     }
 
-    return(
-       
-        <div className='table'>
-            {/* <div className='table--header'>{renderTableHeader(formatWorkbook)}</div>
-            <div>{renderTableContent(formatWorkbook)}</div> */}
-{/* <div>{formatWorkbookState}</div> */}
-        </div>
-    )
+    let RenderTable = () =>{
+        return(
+            <div className='table'>
+                <div id='fonts'>Fonts
+                    <div>All
+                        <div>{renderAllTableContent(formatWorkbookState,"all")}</div>
+                    </div>
+                    <div>WorkSheets</div>
+                    <div>{renderAllTableContent(formatWorkbookState,'worksheet')}</div>
+        
+                    <div>Tooltips</div>
+                    <div>{renderAllTableContent(formatWorkbookState,'tooltip')}</div>
+        
+                    <div>Worksheet Titles</div>
+                    <div>{renderAllTableContent(formatWorkbookState,'title')}</div>
+        
+                    <div>Dashboard Titles</div>
+                    <div>{renderAllTableContent(formatWorkbookState,'dashTitle')}</div>
+        
+                    <div>Story Titles</div>
+                    <div>{renderAllTableContent(formatWorkbookState,'storyTitle')}</div>
+                </div>
+                <div id='lines'>Lines
+                    <div>Grid Lines</div>
+                    <div>{renderAllTableContent(formatWorkbookState,'gridline')}</div>
+        
+                    <div>Zero Lines</div>
+                    <div>{renderAllTableContent(formatWorkbookState,'zeroline')}</div>
+        
+                    <div>Trend Lines</div>
+                    <div>{renderAllTableContent(formatWorkbookState,'trendline')}</div>
+        
+                    <div>Reference Lines</div>
+                    <div>{renderAllTableContent(formatWorkbookState,'refline')}</div>
+        
+                    <div>Drop Lines</div>
+                    <div>{renderAllTableContent(formatWorkbookState,'dropline')}</div>
+        
+                    <div>Axis Rulers</div>
+                    <div>{renderAllTableContent(formatWorkbookState,'axis')}</div>
+                </div>
+            </div>
+        )
+    }
+    if (formatWorkbookState){
+        return <RenderTable />
+    } else {
+        return <div></div>
+    }
+            
+        
+
 
 }

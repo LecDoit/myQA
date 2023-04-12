@@ -75,8 +75,8 @@ export const UploadNav = () =>{
         <div>
             <div>File Reader</div>
             <input type='file' onChange={handleFileChange}></input>
-            {/* <DbRCTable data={dashboardsXML}></DbRCTable>
-            <WsRCTable data={worksheetsXML}></WsRCTable> */}
+            <DbRCTable data={dashboardsXML}></DbRCTable>
+            <WsRCTable data={worksheetsXML}></WsRCTable>
             <WbTable data={workbookStyleXML}></WbTable>
         </div>
     )
