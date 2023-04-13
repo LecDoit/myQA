@@ -5,6 +5,7 @@ import {WsRCTable} from './wsRCTable'
 import {WbTable} from './wbTable'
 import { DbSize } from './dbSize'
 import { DbFormatTable } from './dbFormatTable'
+import { WsFormatTable } from './wsFormatTable'
 var XMLParser = require('react-xml-parser')
 
 
@@ -85,10 +86,11 @@ export const UploadNav = () =>{
                 {/* <WbTable data={workbookStyleXML}></WbTable> */}
                 {/* dashboardSizeFunc */}
                 {/* <DbSize data={dashboardsXML}></DbSize> */}
+                {/* dashboardFormatFunc */}
+                {/* <DbFormatTable data={dashboardsXML}></DbFormatTable> */}
 
-
-
-            <DbFormatTable data={dashboardsXML}></DbFormatTable>
+                {/* worksheetFormatFunc */}
+                <WsFormatTable data={worksheetsXML}></WsFormatTable>
         </div>
     )
 }

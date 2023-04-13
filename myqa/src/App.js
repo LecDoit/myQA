@@ -78,8 +78,10 @@ const App = () => {
   useEffect(() => {
     // formatDashboard(dashboardsXML)
     // formatWorkbook(workbookStyleXML)
-    // formatWorksheetRC(worksheetsXML)
+
     // dashboardSize(dashboardsXML)
+
+    // formatWorksheetRC(worksheetsXML)
     // filterTitleRC(worksheetsXML)
     // worksheetFormatFilters(worksheetsXML)
 
