@@ -1,6 +1,7 @@
 *{
     border:1px solid black;
     font-size: 12px;
+
 }
 
 .table{
@@ -9,8 +10,8 @@
     text-align: center;
 }
 .table--header > div, .table--content > div{
-   width: calc(100%/8);
-   display: inline-block;
+   width: calc(100%/15);
+   display: inline-block;    
    
 
 }
