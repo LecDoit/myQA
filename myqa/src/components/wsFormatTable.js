@@ -11,7 +11,7 @@ export const WsFormatTable = ({data}) =>{
             setstateFormatWs(formatWorksheet(data))
 
         } else{
-            console.log('data is empty')
+            // console.log('data is empty')
         }
     },[data])
 
@@ -43,7 +43,6 @@ export const WsFormatTable = ({data}) =>{
         return Object.entries(arg).map(([key,value],i)=>{
 
             return (
-
                 <div className='table--content' key={i}>
                     <div>{value.wsname}</div>
                     <div>{value[arg2]['font-family']}</div>

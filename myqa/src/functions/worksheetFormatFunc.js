@@ -21,7 +21,9 @@ if (wsXML){
 
     // loop over worksheets
     for (let a = 0;a<worksheets.length;a++){
+
     let wsname = worksheets[a].attributes.name
+
     worksheetsNameArr.push(wsname)
     let wsChildren = worksheets[a].children
 
@@ -29,11 +31,14 @@ if (wsXML){
     for (let b = 0;b<wsChildren.length;b++){
 
         if (wsChildren[b].name==='table'){
+
+
         let tableChildren = wsChildren[b].children
         for (let c = 0;c<tableChildren.length;c++){
             //loop over tableChildren (view,style,panes,rows,cols) to find style
 
             if (tableChildren[c].name==='style'){
+
             let styleChildren = tableChildren[c].children
 
             //create default Instances
@@ -76,7 +81,8 @@ if (wsXML){
                                             'font-weight':'default',
                                             'font-style':'default',
                                             'text-decoration':'default',
-                                            'color':'default'}
+                                            'color':
+                                            'default'}
             let styleRuleTitleInstance = {'font-family':'default',
                                             'font-size':'default',
                                             'font-weight':'default',
@@ -96,6 +102,7 @@ if (wsXML){
                                             'text-decoration':'default',
                                             'color':'default'}
 
+
             if (styleChildren.length===0){
                 worksheetsArr.push(styleRuleWorksheetInstance)
                 cellArr.push(styleRuleCellInstance)
@@ -110,12 +117,15 @@ if (wsXML){
                 let worksheetFormatInstance = worksheetFormatFactory(wsname,styleRuleWorksheetInstance,styleRuleCellInstance,styleRuleCellSubTotalInstance,styleRuleCellTotalInstance,styleRuleLabelInstance,styleRuleTooltipInstance,styleRuleTitleInstance,styleRuleHeaderTotalInstance,styleRuleHeaderSubTotalInstance) 
                 wsFormats.push(worksheetFormatInstance)
 
+
             } else {
+
 
             // check the attributes to find correct element
             for (let d = 0;d<styleChildren.length;d++){
                 let styleRuleChildren = styleChildren[d].children
                 let element = styleChildren[d].attributes.element
+
                 if (element ==='worksheet'){
                 for (let e = 0;e<styleRuleChildren.length;e++){
                     let attr = styleRuleChildren[e].attributes.attr
@@ -154,7 +164,7 @@ if (wsXML){
                     let attr = styleRuleChildren[e].attributes.attr
                     let value = styleRuleChildren[e].attributes.value
                     styleRuleLabelInstance[attr] = value 
-                    // console.log(attr,value)
+
                 }
                 labelArr.push(styleRuleLabelInstance)
                 } else if (element ==='tooltip'){
@@ -162,7 +172,7 @@ if (wsXML){
                     let attr = styleRuleChildren[e].attributes.attr
                     let value = styleRuleChildren[e].attributes.value
                     styleRuleTooltipInstance[attr] = value 
-                    // console.log(attr,value)
+
                 }
                 tooltipArr.push(styleRuleTooltipInstance)
                 } else if (element ==='title'){
@@ -170,7 +180,7 @@ if (wsXML){
                     let attr = styleRuleChildren[e].attributes.attr
                     let value = styleRuleChildren[e].attributes.value
                     styleRuleTitleInstance[attr] = value 
-                    // console.log(attr,value)
+
                 }
                 titleArr.push(styleRuleTitleInstance)
                 } else if (element ==='header'){
@@ -192,9 +202,11 @@ if (wsXML){
                 headerTotalArr.push(styleRuleHeaderTotalInstance)
                 headerSubTotalArr.push(styleRuleHeaderSubTotalInstance)
                 }
-                let worksheetFormatInstance = worksheetFormatFactory(wsname,styleRuleWorksheetInstance,styleRuleCellInstance,styleRuleCellSubTotalInstance,styleRuleCellTotalInstance,styleRuleLabelInstance,styleRuleTooltipInstance,styleRuleTitleInstance,styleRuleHeaderTotalInstance,styleRuleHeaderSubTotalInstance,) 
-                wsFormats.push(worksheetFormatInstance)
+
             }
+            let worksheetFormatInstance = worksheetFormatFactory(wsname,styleRuleWorksheetInstance,styleRuleCellInstance,styleRuleCellSubTotalInstance,styleRuleCellTotalInstance,styleRuleLabelInstance,styleRuleTooltipInstance,styleRuleTitleInstance,styleRuleHeaderTotalInstance,styleRuleHeaderSubTotalInstance) 
+            wsFormats.push(worksheetFormatInstance)
+
             }
 
             }
