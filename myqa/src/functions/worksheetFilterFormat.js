@@ -16,6 +16,7 @@ export  let worksheetFormatFilters = (wsXML) =>{
       for (let a = 0;a<worksheets.length;a++){
         let wsname = worksheets[a].attributes.name
 
+
         let wsChildren = worksheets[a].children
 
         // loop over worksheet childrens (table,simple-id) to get into the table
@@ -26,6 +27,7 @@ export  let worksheetFormatFilters = (wsXML) =>{
               //loop over tableChildren (view,style,panes,rows,cols) to find style
         
               if (tableChildren[c].name==='style'){
+      
                 let styleChildren = tableChildren[c].children
                 //create default Instances
                 let styleRuleQuickFilterInstance =  
@@ -67,6 +69,7 @@ export  let worksheetFormatFilters = (wsXML) =>{
                   let element = styleChildren[d].attributes.element
 
 
+
                   if (element ==='quick-filter'){                
                     for (let e = 0;e<styleRuleChildren.length;e++){
                     let attr = styleRuleChildren[e].attributes.attr
@@ -93,6 +96,7 @@ export  let worksheetFormatFilters = (wsXML) =>{
           }
         }
       }
-      console.log(formatFilterAndSetControls)
+
+      return formatFilterAndSetControls
     }
   }

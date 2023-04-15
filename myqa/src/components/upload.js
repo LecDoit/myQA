@@ -3,9 +3,10 @@ import axios from 'axios'
 import {DbRCTable} from './dbRCTable'
 import {WsRCTable} from './wsRCTable'
 import {WbTable} from './wbTable'
-import { DbSize } from './dbSize'
-import { DbFormatTable } from './dbFormatTable'
-import { WsFormatTable } from './wsFormatTable'
+import {DbSize} from './dbSize'
+import {DbFormatTable} from './dbFormatTable'
+import {WsFormatTable} from './wsFormatTable'
+import {WsFilterFormatTable} from './filterRCTable'
 var XMLParser = require('react-xml-parser')
 
 
@@ -79,18 +80,27 @@ export const UploadNav = () =>{
             <input type='file' onChange={handleFileChange}></input>
 
                 {/* dashboardTitleRCFunc */}
-                {/* <DbRCTable data={dashboardsXML}></DbRCTable> */}
+                <DbRCTable data={dashboardsXML}></DbRCTable>
                 {/* worksheetTitleRCFunc */}
-                {/* <WsRCTable data={worksheetsXML}></WsRCTable> */}
+                <WsRCTable data={worksheetsXML}></WsRCTable>
                 {/* workbookFormatFunc */}
-                {/* <WbTable data={workbookStyleXML}></WbTable> */}
+                <WbTable data={workbookStyleXML}></WbTable>
+                
                 {/* dashboardSizeFunc */}
-                {/* <DbSize data={dashboardsXML}></DbSize> */}
+                <DbSize data={dashboardsXML}></DbSize>
+                
                 {/* dashboardFormatFunc */}
-                {/* <DbFormatTable data={dashboardsXML}></DbFormatTable> */}
+                <DbFormatTable data={dashboardsXML}></DbFormatTable>
 
                 {/* worksheetFormatFunc */}
                 <WsFormatTable data={worksheetsXML}></WsFormatTable>
+
+                {/* FILTERS */}
+                {/* filterTitleRCFunc */}
+                <WsFilterFormatTable data={worksheetsXML} ></WsFilterFormatTable>
+
+
+
         </div>
     )
 }

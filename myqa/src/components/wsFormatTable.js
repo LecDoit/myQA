@@ -9,9 +9,6 @@ export const WsFormatTable = ({data}) =>{
     useEffect(()=>{
         if (data){
             setstateFormatWs(formatWorksheet(data))
-
-        } else{
-            // console.log('data is empty')
         }
     },[data])
 
@@ -137,6 +134,6 @@ export const WsFormatTable = ({data}) =>{
     if (stateFormatWs){
         return <RenderTable />
     } else{
-        return <div>test</div>
+        return <div></div>
     }
 }
