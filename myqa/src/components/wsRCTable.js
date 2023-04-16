@@ -9,26 +9,16 @@ export const WsRCTable = ({data}) =>{
     useEffect(()=>{
         if (data){
             setstateRC(formatWorksheetRC(data))
-            console.log(stateRC)
+  
 
-        } else{
-            console.log('data is empty')
-        }
+        } 
     },[data])
     
 
-    useEffect(()=>{
-        if(stateRC){
-
-            console.log(stateRC)
-
-        }
-    },[stateRC])
 
     let renderTableHeader = (arg)=>{
         if (arg){
             let arg2 = arg[0]
-            console.log(Object.keys(arg2))
             return Object.keys(arg2).map((obj,i)=>{
                 
                 return (

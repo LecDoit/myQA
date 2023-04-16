@@ -10,9 +10,7 @@ export const DbFormatTable = ({data}) =>{
         if (data){
             setstateFormatDb(formatDashboard(data))
 
-        } else{
-            console.log('data is empty')
-        }
+        } 
     },[data])
     
 

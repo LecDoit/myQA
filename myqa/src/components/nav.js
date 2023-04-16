@@ -1,14 +1,27 @@
-// import React ,{useState,useEffect} from "react"
+import React ,{useState,useEffect} from "react"
 
 
  export const Navbar = () =>{
+    const [navbar,setNavbar] = useState(false)
+
+    const changeBackground = () =>{
+        if (window.scrollY>= 8){
+            setNavbar(true)
+        } else{
+            setNavbar(false)
+        }
+    }
+    window.addEventListener('scroll',changeBackground)
+
 
     return (
-        <div>
-            <div id='logo'>Piotr</div>
-            <div id='git'>github</div>
-            <div id='about'>About</div>
-            <button id='new--upload'>New upload</button>
+        <div className={navbar ? 'navbar active' : 'navbar'}>
+            <div id='navbar--left'>myQA</div>
+            <div id="navbar--right">
+                <div id='home'>Home</div>
+                <div id='about'>About</div>
+                <div id='git'>github</div>
+            </div>
         </div>
     )
 

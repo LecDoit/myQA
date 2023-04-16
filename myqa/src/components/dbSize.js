@@ -11,14 +11,12 @@ export const DbSize = ({data}) =>{
         if (data){
             setstateSize(dashboardSize(data))
 
-        } else{
-            console.log('data is empty')
-        }
+        } 
     },[data])
     
 
     let renderTableHeader = (arg)=>{
-        console.log(stateSize)
+
         if (arg){
             let arg2 = arg[0]
             return Object.keys(arg2).map((obj,i)=>{

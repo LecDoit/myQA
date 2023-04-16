@@ -12,11 +12,7 @@ export const WsFormatTable = ({data}) =>{
         }
     },[data])
 
-    useEffect(()=>{
-        if (stateFormatWs){
-            console.log(stateFormatWs)
-        }
-    },[stateFormatWs])
+
 
 
     let renderFixedTableHeader =()=>{

@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react'
 import {DbRCTable} from './dbRCTable'
 import {WsRCTable} from './wsRCTable'
 import {WbTable} from './wbTable'
 import {DbSize} from './dbSize'
 import {DbFormatTable} from './dbFormatTable'
 import {WsFormatTable} from './wsFormatTable'
-import {WsFilterFormatTable} from './filterRCTable'
+import {WsFilterFormatTable} from './wsFilterFormatTable'
 var XMLParser = require('react-xml-parser')
 
 
@@ -14,8 +13,6 @@ var XMLParser = require('react-xml-parser')
 export const UploadNav = () =>{
     const [file, setFile] = useState(null)
 
-    const [xml, setXML] = useState(null)
-    const [xmlDOM, setXMLDOM] = useState(null)
     const [workbookStyleXML, setWorkbookStyleXML] = useState(null)
     const [dashboardsXML, setDashboardsXML] = useState(null)
     const [worksheetsXML, setWorksheetsXML] = useState(null)
@@ -44,8 +41,7 @@ export const UploadNav = () =>{
 
             var xmlRAW = new XMLParser().parseFromString(file,'application/xml')
 
-            let xmlDOM = new DOMParser().parseFromString(file, "text/xml");
-            setXMLDOM(xmlDOM)
+
     
 
             let workbookXMLGet= (xmlRAW.getElementsByTagName('workbook')[0].children)
@@ -68,14 +64,12 @@ export const UploadNav = () =>{
     
             }
    
-
-
             }
 
         }, [file])
 
     return(
-        <div>
+        <div id='upload--containter'>
             <div>File Reader</div>
             <input type='file' onChange={handleFileChange}></input>
 
