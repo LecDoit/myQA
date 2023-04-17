@@ -12,6 +12,8 @@ import {HeroIndex} from '../src/heroComponent/heroIndex'
 // import {filterTitleRC} from './functions/filterTitleRCFunc'
 // import {worksheetFormatFilters} from './functions/worksheetFilterFormat'
 
+
+
 import { Navbar } from './components/nav'
 import { UploadNav } from './components/upload'
 import { AnimationNav } from './components/animation'
@@ -28,8 +30,9 @@ const App = () => {
 
     <div className="App">
       <Navbar></Navbar>
-      {/* <HeroIndex></HeroIndex> */}
+      <HeroIndex></HeroIndex>
       <UploadNav></UploadNav>
+
     </div>
   );
 }
