@@ -21,11 +21,18 @@ export const UploadNav = () =>{
     const [dashTitle, setDashTitle] = useState([])
 
     const ref = useRef(null)
+    const ref2 = useRef(null)
 
 
-    const handleScroll = () =>{
-        ref.current?.scrollIntoView({behavior:'smooth'});
- 
+    const handleScroll = (arg) =>{
+        setTimeout(()=>{
+            arg.current?.scrollIntoView({behavior:'smooth'});
+
+
+        },1000)
+
+
+
 
     }
 
@@ -65,9 +72,9 @@ export const UploadNav = () =>{
     
             let worksheetsXMLGet = xmlRAW.getElementsByTagName('worksheets')[0]
             setWorksheetsXML(worksheetsXMLGet)
+            handleScroll(ref)
 
-            setInterval(handleScroll(),5000 )
- 
+
 
             for (let a = 0;a<workbookXMLGet.length;a++){
 
@@ -92,7 +99,7 @@ export const UploadNav = () =>{
                 <div id='upload--content'>Analyze Tableau Workbook</div>
                 <input id='upload--button' className='button' type='file' onChange={handleFileChange}></input>
                 </div>
-            <div  ref={ref} id='upload--result'>
+            <div ref={ref} id='upload--result'>
   
                 <div  id='dashboard--title' >{fileName}</div>
 

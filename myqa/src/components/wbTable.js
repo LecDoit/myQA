@@ -34,7 +34,7 @@ export const WbTable = ({data}) =>{
 
     let RenderTable = () =>{
         return(
-            <div className='table'>
+            <div className='table'>Format Workbook
                 <div id='fonts'>Fonts
                     <div>All
                         <div>{renderAllTableContent(formatWorkbookState,"all")}</div>
