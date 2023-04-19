@@ -1,4 +1,4 @@
-import XMLDATA from './twbx/COA.twb'
+
 import React, { useState, useEffect, useMemo } from 'react'
 import axios from 'axios'
 import {HeroIndex} from '../src/heroComponent/heroIndex'
