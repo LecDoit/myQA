@@ -3,17 +3,21 @@ import React, { useState, useEffect, useMemo } from 'react'
 import {formatWorkbook} from '../functions/workbookFormatFunc'
 
 
-export const WbTable = ({data}) =>{
+export const WbTable = (props) =>{
 
     const [formatWorkbookState,setformatWorkbookState] = useState(null)
 
     useEffect(()=>{
-        if (data){
-            setformatWorkbookState(formatWorkbook(data))
+        if (props.data){
+            props.valueCheck(true)
+            
+            
+            
+            setformatWorkbookState(formatWorkbook(props.data))
 
         
         }
-    },[data])
+    },[props.data])
     
 
     let renderAllTableContent= (arg,arg2)=>{
@@ -77,7 +81,12 @@ export const WbTable = ({data}) =>{
         )
     }
     if (formatWorkbookState){
-        return <RenderTable />
+        return (
+        <div>
+            <div  id='dashboard--title' >{props.fileName}</div>
+            <RenderTable />
+        </div>
+        )
     } else {
         return <div></div>
     }

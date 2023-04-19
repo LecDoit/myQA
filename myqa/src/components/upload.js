@@ -19,22 +19,14 @@ export const UploadNav = () =>{
     const [worksheetsXML, setWorksheetsXML] = useState(null)
     const [dashboards, setdashboards] = useState([])
     const [dashTitle, setDashTitle] = useState([])
+    const [isStart,setIsStart] = useState(false)
 
     const ref = useRef(null)
-    const ref2 = useRef(null)
-
-
-    const handleScroll = (arg) =>{
-        setTimeout(()=>{
-            arg.current?.scrollIntoView({behavior:'smooth'});
-
-
-        },1000)
-
-
-
-
+    const valueCheck = (arg)=>{
+        setIsStart(arg)
     }
+
+
 
 
     const handleFileChange = e =>{
@@ -55,44 +47,60 @@ export const UploadNav = () =>{
     }
 
 
-        useEffect(() => {
-            if (file) {
-                
-          
+    useEffect(() => {
+        if (file) {
+            
+        
 
-            var xmlRAW = new XMLParser().parseFromString(file,'application/xml')
-
-
-    
-
-            let workbookXMLGet= (xmlRAW.getElementsByTagName('workbook')[0].children)
-            let dashboardsXMLGet = xmlRAW.getElementsByTagName('dashboards')[0]
-
-            setDashboardsXML(dashboardsXMLGet)
-    
-            let worksheetsXMLGet = xmlRAW.getElementsByTagName('worksheets')[0]
-            setWorksheetsXML(worksheetsXMLGet)
-            handleScroll(ref)
+        var xmlRAW = new XMLParser().parseFromString(file,'application/xml')
 
 
 
-            for (let a = 0;a<workbookXMLGet.length;a++){
 
-              if ((workbookXMLGet[a].name)==='style'){
-                setWorkbookStyleXML(workbookXMLGet[a])
-                return
-              } else{
-                setWorkbookStyleXML('empty')
-              }
-    
+        let workbookXMLGet= (xmlRAW.getElementsByTagName('workbook')[0].children)
+        let dashboardsXMLGet = xmlRAW.getElementsByTagName('dashboards')[0]
+
+        setDashboardsXML(dashboardsXMLGet)
+
+        let worksheetsXMLGet = xmlRAW.getElementsByTagName('worksheets')[0]
+        setWorksheetsXML(worksheetsXMLGet)
+        // handleScroll(ref)
+
+
+
+        for (let a = 0;a<workbookXMLGet.length;a++){
+
+            if ((workbookXMLGet[a].name)==='style'){
+            setWorkbookStyleXML(workbookXMLGet[a])
+            return
+            } else{
+            setWorkbookStyleXML('empty')
             }
 
-            }
+        }
 
-        }, [file])
+        }
+
+    }, [file])
+
+    useEffect(()=>{
+        if (isStart){
+            const firstDiv = document.getElementById('dashboard--title')
+            const cords = firstDiv.getBoundingClientRect().y -60
+            window.scrollTo({
+                top:cords,
+                behavior:'smooth'
+            })
+
+
+            
+        }
+
+
+    },[isStart])
 
     return(
-        <div id=''>
+        <div id='upload--main--containter'>
 
             <div id='upload--containter'>
 
@@ -101,11 +109,10 @@ export const UploadNav = () =>{
                 </div>
             <div ref={ref} id='upload--result'>
   
-                <div  id='dashboard--title' >{fileName}</div>
-
+  
                 {/* WORKBOOK */}
                 {/* workbookFormatFunc */}
-                <WbTable  data={workbookStyleXML}></WbTable>
+                <WbTable  data={workbookStyleXML} valueCheck={valueCheck} fileName={fileName}></WbTable>
 
                 {/* dashboardFormatFunc */}
                 <DbFormatTable data={dashboardsXML}></DbFormatTable>

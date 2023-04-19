@@ -12,11 +12,19 @@
     color:white;
 
 }
+.App{
+    display: grid;
+    /* background-color: aqua; */
+    max-height: 100vh;
+}
+#upload--main--containter{
+    position: relative;
+    top:-60px;
+}
 
 .navbar{
     display: flex;
     flex-direction: row;
-    /* background: transparent; */
     position: sticky;
     height: 60px;
     top: 0;
@@ -55,7 +63,8 @@
 video{
     width:100vw;
     height:100vh;
-    object-fit:fill;
+
+    object-fit:cover;
     top:0;
     position: fixed;
     z-index: 0;
@@ -152,7 +161,7 @@ video{
     position:relative;
     background-color: black;
     z-index: 1;
-    padding-top: 60px;
+    /* padding-top: 60px; */
 }
 
 
