@@ -14,7 +14,7 @@
 }
 .App{
     display: grid;
-    /* background-color: aqua; */
+
     max-height: 100vh;
 }
 #upload--main--containter{
@@ -25,7 +25,7 @@
 .navbar{
     display: flex;
     flex-direction: row;
-    position: sticky;
+    position: fixed;
     height: 60px;
     top: 0;
     text-align: center;
@@ -39,6 +39,9 @@
 
 
 
+
+
+
 }
 
 .nav ,.active{
@@ -46,17 +49,25 @@
     background-color:black;
     border-bottom: 1px solid white;
     
+    
 
 
 }
 #navbar--left{
 
+    font-size: 14px;
+    text-decoration:underline;
+
     display: flex;
     width: 200%;
+    margin-left:3.14%;
 }
 
 #navbar--right{
     display: flex;
+}
+#home,#about,#git{
+    font-size: 14px;
 }
 
 
@@ -70,31 +81,6 @@ video{
     z-index: 0;
 }
 
-
-.table{
-    display: grid;
-    width: 100%;
-    text-align: center;
-
-}
-.table--header > div, .table--content > div{
-   width: calc(100%/15);
-   display: inline-block;    
-   
-
-}
-
-.table--header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-.table--content{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-   
-}
 
 
 #upload--containter{
@@ -158,10 +144,10 @@ video{
 }
 
 #upload--result{
-    position:relative;
+    position:absolute;
     background-color: black;
-    z-index: 1;
-    /* padding-top: 60px; */
+    z-index: 0;
+
 }
 
 
@@ -178,4 +164,52 @@ video{
     width: 100%;
     height: 100%;
 
+}
+
+
+.table{
+    font-size: 35px;
+    border:1px solid greenyellow;
+    display: grid;
+    gap:20px;
+}
+.table--subtitle{
+    font-size: 25px;
+    border:1px solid red;
+    display: grid;
+    gap:20px;
+}
+.table--sub--subtitle{
+    font-size:20px;
+    border:1px solid yellow;
+    display: grid;
+    gap:20px;
+}
+.key{
+    font-weight: 600;
+}
+
+
+
+/* .table--header > div, .table--content > div{
+   width: calc(100%/15);
+   display: inline-block;    
+   
+
+} */
+
+.table--row{
+    display: flex;
+    /* display: grid; */
+    margin-bottom:10px;
+    
+    border:1px solid magenta;
+    /* flex-direction: row; */
+    /* justify-content: space-around; */
+}
+.table--content{
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: space-around; */
+   
 }

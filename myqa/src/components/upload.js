@@ -115,24 +115,24 @@ export const UploadNav = () =>{
                 <WbTable  data={workbookStyleXML} valueCheck={valueCheck} fileName={fileName}></WbTable>
 
                 {/* dashboardFormatFunc */}
-                <DbFormatTable data={dashboardsXML}></DbFormatTable>
+                {/* <DbFormatTable data={dashboardsXML}></DbFormatTable> */}
 
                 {/* dashboardTitleRCFunc */}
-                <DbRCTable data={dashboardsXML}></DbRCTable>
+                {/* <DbRCTable data={dashboardsXML}></DbRCTable> */}
 
                 {/* dashboardSizeFunc */}
-                <DbSize  data={dashboardsXML}></DbSize>
+                {/* <DbSize  data={dashboardsXML}></DbSize> */}
                 
                 {/* WORKSHEETS */}
                 {/* worksheetTitleRCFunc */}
-                <WsRCTable data={worksheetsXML}></WsRCTable>
+                {/* <WsRCTable data={worksheetsXML}></WsRCTable> */}
 
                 {/* worksheetFormatFunc */}
-                <WsFormatTable data={worksheetsXML}></WsFormatTable>
+                {/* <WsFormatTable data={worksheetsXML}></WsFormatTable> */}
 
                 {/* FILTERS */}
                 {/* filterTitleRCFunc */}
-                <WsFilterFormatTable data={worksheetsXML} ></WsFilterFormatTable>
+                {/* <WsFilterFormatTable data={worksheetsXML} ></WsFilterFormatTable> */}
 
             </div>
         </div>
