@@ -144,7 +144,7 @@ video{
 }
 
 #upload--result{
-    position:absolute;
+    /* position:absolute; */
     background-color: black;
     z-index: 0;
 
@@ -212,4 +212,25 @@ video{
     /* flex-direction: row; */
     /* justify-content: space-around; */
    
+}
+
+.content{
+
+
+    background-color: aqua;
+    transition: all 3s ease-in-out;
+    height: 200px;
+
+}
+.content:hover{
+    background-color: magenta;
+}
+.content.show{
+
+    background-color: blue;
+    transition: all 3s ease;
+
+}
+.content.show:hover{
+    background-color:yellow
 }

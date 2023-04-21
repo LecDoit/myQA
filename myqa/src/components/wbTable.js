@@ -8,15 +8,12 @@ export const WbTable = (props) =>{
     const [formatWorkbookState,setformatWorkbookState] = useState(null)
     const [clicked,setClicked] = useState(false)
     const [clicked2,setClicked2] = useState(false)
+    const [clicked3,setClicked3] = useState(false)
 
     const toggle = (stat,setstat) =>{
-        console.log('clicked!')
 
         if (stat===false){
-            console.log('is false after clicked but changed to true')
             return setstat(true)
-        } else{
-            console.log('dafuq?')
         }
         setstat(false)
     }
@@ -25,12 +22,7 @@ export const WbTable = (props) =>{
     useEffect(()=>{
         if (props.data){
             props.valueCheck(true)
-            
-            
-            
             setformatWorkbookState(formatWorkbook(props.data))
-
-        
         }
     },[props.data])
     
@@ -54,67 +46,85 @@ export const WbTable = (props) =>{
 
     let RenderTable = () =>{
         return(
-            <div onClick={()=>toggle(clicked,setClicked)} id='formatWorkbook' className='table'>Format Workbook
-            <div>{clicked===false ? "+":"-"}</div>
-                <div onClick={()=>toggle(clicked2,setClicked2)} className='table--subtitle'>Fonts
-                    <div className='table--sub--subtitle'>All
+            <div>
+                <div onClick={()=>toggle(clicked,setClicked)}
+                    id='formatWorkbook' 
+                    className='table'>
+                    Format Workbook
+                    
+                    <div>{clicked===false ? "+":"-"}</div>
+                </div>
+                <div className={clicked===true ? 'content':'content show'}> 
+                     
+                    {/* <div onClick={()=>toggle(clicked2,setClicked2)} 
+                        className='table--subtitle'>
+                        Fonts
+                        <div>{clicked2===false ? "+":"-"}</div>
+                    </div> */}
+
+                    {/* <div onClick={()=>toggle(clicked3,setClicked3)} 
+                        className='table--sub--subtitle'>
+                        All
+                        <div>{clicked3===false ? "+":"-"}</div>
                         <div>{renderAllTableContent(formatWorkbookState,"all")}</div>
-                    </div>
-                    <div className='table--sub--subtitle'>WorkSheets
-                        <div>{renderAllTableContent(formatWorkbookState,'worksheet')}</div>
-                    </div>
-
-        
-                    <div className='table--sub--subtitle'>Tooltips
-                        <div>{renderAllTableContent(formatWorkbookState,'tooltip')}</div>
-                    </div>
-
-                    <div className='table--sub--subtitle'>Worksheet Titles
-                        <div>{renderAllTableContent(formatWorkbookState,'title')}</div>
-                    </div>
-                    
-        
-                    <div className='table--sub--subtitle'>Dashboard Titles
-                        <div>{renderAllTableContent(formatWorkbookState,'dashTitle')}</div>
-                    </div>
-                    
-        
-                    <div className='table--sub--subtitle'>Story Titles
-                        <div>{renderAllTableContent(formatWorkbookState,'storyTitle')}</div>
-                    </div> 
-                    
+                    </div> */}
                 </div>
-                <div className='table--subtitle' id='lines'>Lines
-                    <div className='table--sub--subtitle'>Grid Lines
-                         <div>{renderAllTableContent(formatWorkbookState,'gridline')}</div>
-        
-                    </div>
-
-                    <div className='table--sub--subtitle'>Zero Lines
-                        <div>{renderAllTableContent(formatWorkbookState,'zeroline')}</div>
-                    </div>
-
-        
-                    <div className='table--sub--subtitle'>Trend Lines
-                         <div>{renderAllTableContent(formatWorkbookState,'trendline')}</div>
-                    </div>
-
-        
-                    <div className='table--sub--subtitle'>Reference Lines
-                        <div>{renderAllTableContent(formatWorkbookState,'refline')}</div>
-                    </div>
-
-        
-                    <div className='table--sub--subtitle'>Drop Lines
-                        <div>{renderAllTableContent(formatWorkbookState,'dropline')}</div>
-                    </div>
-
-        
-                    <div className='table--sub--subtitle'>Axis Rulers
-                        <div>{renderAllTableContent(formatWorkbookState,'axis')}</div>
-                    </div>
-
+                {/* <div className='table--sub--subtitle'>WorkSheets
+                    <div>{renderAllTableContent(formatWorkbookState,'worksheet')}</div>
                 </div>
+
+    
+                <div className='table--sub--subtitle'>Tooltips
+                    <div>{renderAllTableContent(formatWorkbookState,'tooltip')}</div>
+                </div>
+
+                <div className='table--sub--subtitle'>Worksheet Titles
+                    <div>{renderAllTableContent(formatWorkbookState,'title')}</div>
+                </div>
+                
+    
+                <div className='table--sub--subtitle'>Dashboard Titles
+                    <div>{renderAllTableContent(formatWorkbookState,'dashTitle')}</div>
+                </div>
+                
+    
+                <div className='table--sub--subtitle'>Story Titles
+                    <div>{renderAllTableContent(formatWorkbookState,'storyTitle')}</div>
+                </div>  */}
+                
+        
+                    {/* <div className='table--subtitle' id='lines'>Lines
+                        <div className='table--sub--subtitle'>Grid Lines
+                            <div>{renderAllTableContent(formatWorkbookState,'gridline')}</div>
+            
+                        </div>
+
+                        <div className='table--sub--subtitle'>Zero Lines
+                            <div>{renderAllTableContent(formatWorkbookState,'zeroline')}</div>
+                        </div>
+
+            
+                        <div className='table--sub--subtitle'>Trend Lines
+                            <div>{renderAllTableContent(formatWorkbookState,'trendline')}</div>
+                        </div>
+
+            
+                        <div className='table--sub--subtitle'>Reference Lines
+                            <div>{renderAllTableContent(formatWorkbookState,'refline')}</div>
+                        </div>
+
+            
+                        <div className='table--sub--subtitle'>Drop Lines
+                            <div>{renderAllTableContent(formatWorkbookState,'dropline')}</div>
+                        </div>
+
+            
+                        <div className='table--sub--subtitle'>Axis Rulers
+                            <div>{renderAllTableContent(formatWorkbookState,'axis')}</div>
+                        </div>
+
+                    </div> */}
+
             </div>
         )
     }
