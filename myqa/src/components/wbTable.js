@@ -5,10 +5,11 @@ import {formatWorkbook} from '../functions/workbookFormatFunc'
 
 export const WbTable = (props) =>{
 
-    const [formatWorkbookState,setformatWorkbookState] = useState(null)
-    const [clicked,setClicked] = useState(false)
-    const [clicked2,setClicked2] = useState(false)
-    const [clicked3,setClicked3] = useState(false)
+    // const [formatWorkbookState,setformatWorkbookState] = useState(null)
+    const [table,setTableClicked] = useState(false)
+    const [tableSubTitle,setTableSubTitleClicked] = useState(false)
+    const [tableSubSubTitle,setTableSubSubTitleClicked] = useState(false)
+
 
     const toggle = (stat,setstat) =>{
 
@@ -19,12 +20,12 @@ export const WbTable = (props) =>{
     }
 
 
-    useEffect(()=>{
-        if (props.data){
-            props.valueCheck(true)
-            setformatWorkbookState(formatWorkbook(props.data))
-        }
-    },[props.data])
+    // useEffect(()=>{
+    //     if (props.data){
+    //         props.valueCheck(true)
+    //         // setformatWorkbookState(formatWorkbook(props.data))
+    //     }
+    // },[props.data])
     
 
 
@@ -44,30 +45,40 @@ export const WbTable = (props) =>{
         }
     }
 
-    let RenderTable = () =>{
+    // let RenderTable = () =>{
         return(
             <div>
-                <div onClick={()=>toggle(clicked,setClicked)}
+                <div onClick={()=>{setTableClicked(prev=>!prev)}}
                     id='formatWorkbook' 
                     className='table'>
                     Format Workbook
                     
-                    <div>{clicked===false ? "+":"-"}</div>
+                    <div>{table===false ? "+":"-"}</div>
+
                 </div>
-                <div className={clicked===true ? 'content':'content show'}> 
+
+                <div className={table===true ? 'content show':'content'}> 
                      
-                    {/* <div onClick={()=>toggle(clicked2,setClicked2)} 
+                    <div  onClick={()=>{setTableSubTitleClicked(prev=>!prev)}}
                         className='table--subtitle'>
                         Fonts
-                        <div>{clicked2===false ? "+":"-"}</div>
-                    </div> */}
 
-                    {/* <div onClick={()=>toggle(clicked3,setClicked3)} 
-                        className='table--sub--subtitle'>
-                        All
-                        <div>{clicked3===false ? "+":"-"}</div>
-                        <div>{renderAllTableContent(formatWorkbookState,"all")}</div>
-                    </div> */}
+                        <div>{tableSubTitle===false ? "+":"-"}</div>
+
+                    </div>
+
+                    <div className={tableSubTitle===true ? 'content show':'content'}>
+
+                        <div onClick={()=>{setTableSubSubTitleClicked(prev=>!prev)}}
+                            className='table--sub--subtitle'>
+                            All
+                            <div>{tableSubSubTitle===false ? "+":"-"}</div>
+
+                        </div>
+
+                        <div className={tableSubSubTitle===true ? 'content show':'content'} >{renderAllTableContent(props.data,"all")}
+                        </div>
+                    </div>
                 </div>
                 {/* <div className='table--sub--subtitle'>WorkSheets
                     <div>{renderAllTableContent(formatWorkbookState,'worksheet')}</div>
@@ -128,18 +139,18 @@ export const WbTable = (props) =>{
             </div>
         )
     }
-    if (formatWorkbookState){
-        return (
-        <div id='formatWorkbookTable'>
-            <div  id='dashboard--title' >{props.fileName}</div>
-            <RenderTable />
-        </div>
-        )
-    } else {
-        return <div></div>
-    }
+    // if (formatWorkbookState){
+        // return (
+        // <div id='formatWorkbookTable'>
+        //     {/* <div  id='dashboard--title' >{props.fileName}</div> */}
+        //     <RenderTable />
+        // </div>
+        // )
+    // } else {
+    //     return <div></div>
+    // }
             
         
 
 
-}
+// }

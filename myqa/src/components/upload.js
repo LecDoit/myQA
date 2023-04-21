@@ -6,7 +6,15 @@ import {DbSize} from './dbSize'
 import {DbFormatTable} from './dbFormatTable'
 import {WsFormatTable} from './wsFormatTable'
 import {WsFilterFormatTable} from './wsFilterFormatTable'
+// import { RenderTable } from './RenderTable'
+import {formatWorkbook} from '../functions/workbookFormatFunc'
+import { RenderTable } from './RenderTable'
+
 var XMLParser = require('react-xml-parser')
+
+
+
+
 
 
 
@@ -20,6 +28,9 @@ export const UploadNav = () =>{
     const [dashboards, setdashboards] = useState([])
     const [dashTitle, setDashTitle] = useState([])
     const [isStart,setIsStart] = useState(false)
+    const [test,setTest] = useState(false)
+
+    const [formatWorkbookState,setformatWorkbookState] = useState(null)
 
     const ref = useRef(null)
     const valueCheck = (arg)=>{
@@ -28,6 +39,11 @@ export const UploadNav = () =>{
 
 
 
+    useEffect(()=>{
+        if (workbookStyleXML){
+            setformatWorkbookState(formatWorkbook(workbookStyleXML))
+        }
+    },[workbookStyleXML])
 
     const handleFileChange = e =>{
 
@@ -112,7 +128,11 @@ export const UploadNav = () =>{
   
                 {/* WORKBOOK */}
                 {/* workbookFormatFunc */}
-                <WbTable  data={workbookStyleXML} valueCheck={valueCheck} fileName={fileName}></WbTable>
+                
+                { formatWorkbookState  && <WbTable data={formatWorkbookState}/> 
+                }
+                {/* {  <RenderTable />} */}
+                {/* <WbTable  data={workbookStyleXML} valueCheck={valueCheck} fileName={fileName}></WbTable> */}
 
                 {/* dashboardFormatFunc */}
                 {/* <DbFormatTable data={dashboardsXML}></DbFormatTable> */}
