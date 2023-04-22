@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useMemo } from 'react'
 
-import {formatWorkbook} from '../functions/workbookFormatFunc'
+// import {formatWorkbook} from '../functions/workbookFormatFunc'
 
 
 export const WbTable = (props) =>{
 
     // const [formatWorkbookState,setformatWorkbookState] = useState(null)
-    const [table,setTableClicked] = useState(false)
-    const [tableSubTitle,setTableSubTitleClicked] = useState(false)
-    const [tableSubSubTitle,setTableSubSubTitleClicked] = useState(false)
+    const [formatWorkbook,setFormatWorkbookClicked] = useState(false)
+    const [fonts,setFontsClicked] = useState(false)
+    const [lines,setLinesClicked] = useState(false)
+    const [all,setAllClicked] = useState(false)
 
 
     const toggle = (stat,setstat) =>{
@@ -48,57 +49,86 @@ export const WbTable = (props) =>{
     // let RenderTable = () =>{
         return(
             <div>
-                <div onClick={()=>{setTableClicked(prev=>!prev)}}
+                {/* 1 */}
+                <div onClick={()=>{setFormatWorkbookClicked(prev=>!prev)}}
                     id='formatWorkbook' 
                     className='table'>
                     Format Workbook
                     
-                    <div>{table===false ? "+":"-"}</div>
+                    <div>{formatWorkbook===false ? "+":"-"}</div>
 
                 </div>
-
-                <div className={table===true ? 'content show':'content'}> 
+                {/* 1-1 */}
+                <div className={formatWorkbook===true ? 'content show':'content'}> 
                      
-                    <div  onClick={()=>{setTableSubTitleClicked(prev=>!prev)}}
+                     {/* 2 */}
+                    <div  onClick={()=>{setFontsClicked(prev=>!prev)}}
                         className='table--subtitle'>
                         Fonts
 
-                        <div>{tableSubTitle===false ? "+":"-"}</div>
+                        <div>{fonts===false ? "+":"-"}</div>
 
                     </div>
+                    
+                    {/* 2-1 */}
+                    <div className={fonts===true ? 'content show':'content'}>
 
-                    <div className={tableSubTitle===true ? 'content show':'content'}>
-
-                        <div onClick={()=>{setTableSubSubTitleClicked(prev=>!prev)}}
+                        <div onClick={()=>{setAllClicked(prev=>!prev)}}
                             className='table--sub--subtitle'>
                             All
-                            <div>{tableSubSubTitle===false ? "+":"-"}</div>
+                            <div>{all===false ? "+":"-"}</div>
 
                         </div>
 
-                        <div className={tableSubSubTitle===true ? 'content show':'content'} >{renderAllTableContent(props.data,"all")}
+                        <div className={all===true ? 'content show':'content'} >{renderAllTableContent(props.data,"all")}
+
+
+                        {/* <div onClick={()=>{setWorksheetsClicked(prev=>!prev)}}
+                        className='table--sub--subtitle'>
+                            WorkSheets
+                            <div>{worksheets===false ? "+":"-"}</div>
+
+                         </div>
+                         <div className={worksheets===true ? 'content show':'content'} >{renderAllTableContent(props.data,'worksheet')}</div> */}
+
+
                         </div>
                     </div>
-                </div>
-                {/* <div className='table--sub--subtitle'>WorkSheets
-                    <div>{renderAllTableContent(formatWorkbookState,'worksheet')}</div>
+
+
+                    {/* 3 */}
+        
+                    <div  onClick={()=>{setLinesClicked(prev=>!prev)}}
+                        className='table--subtitle'>
+                        Lines
+
+                        <div>{lines===false ? "+":"-"}</div>
+
+                    </div>
+                    {/* 3-1 */}
+                    <div className={lines===true ? 'content show':'content'}> 
                 </div>
 
+                </div>
+
+                
+
+
     
-                <div className='table--sub--subtitle'>Tooltips
+                {/* <div className='table--sub--subtitle'>Tooltips
                     <div>{renderAllTableContent(formatWorkbookState,'tooltip')}</div>
-                </div>
+                </div> */}
 
-                <div className='table--sub--subtitle'>Worksheet Titles
+                {/* <div className='table--sub--subtitle'>Worksheet Titles
                     <div>{renderAllTableContent(formatWorkbookState,'title')}</div>
-                </div>
+                </div> */}
                 
     
-                <div className='table--sub--subtitle'>Dashboard Titles
+                {/* <div className='table--sub--subtitle'>Dashboard Titles
                     <div>{renderAllTableContent(formatWorkbookState,'dashTitle')}</div>
-                </div>
+                </div> */}
                 
-    
+{/*     
                 <div className='table--sub--subtitle'>Story Titles
                     <div>{renderAllTableContent(formatWorkbookState,'storyTitle')}</div>
                 </div>  */}
