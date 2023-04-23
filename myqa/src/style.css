@@ -3,13 +3,19 @@
 
 *{
     /* border:1px solid magenta; */
-    font-size: 12px;
+    /* font-size: 12px; */
     font-family: 'Sofia Sans Condense';
     width: 100%;
     margin: 0;
     padding: 0;
     /* background-color: rgb(0, 31, 48); */
-    color:white;
+    color: #C6C4C5;;
+
+}
+.fake{
+    background-color: #4BFFA5;
+    background-color:#040F3D;
+    background-color: #C6C4C5;
 
 }
 .App{
@@ -144,8 +150,8 @@ video{
 }
 
 #upload--result{
-    /* position:absolute; */
-    background-color: black;
+
+    background-color: black;;
     z-index: 0;
 
 }
@@ -168,22 +174,58 @@ video{
 
 
 .table{
+
+    display: flex;
+    border-bottom: 3px solid white ;
+
+}
+
+.title{
+    padding: 10px;
     font-size: 35px;
-    border:1px solid greenyellow;
-    display: grid;
-    gap:20px;
+    
+}
+
+.subtitle{
+    padding: 10px;
+    padding-left: 15px;
+    margin: auto;
+}
+.chevron{
+    width: 25px;
+    margin: 20px;
+    transform: rotate(-90deg);
+    transition: transform 0.2s ease-in-out
+
+  
+}
+.chevron.open{
+    transform: rotate(-0deg);
+
+
+
 }
 .table--subtitle{
     font-size: 25px;
-    border:1px solid red;
-    display: grid;
-    gap:20px;
+    
+
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid white ;
+
+
+}
+.subsubtitle{
+    padding:10px;
+    padding-left:20px;
+    margin: auto;
+
 }
 .table--sub--subtitle{
     font-size:20px;
-    border:1px solid yellow;
-    display: grid;
-    gap:20px;
+    border-bottom: 1px solid white;
+    display: flex;
+
 }
 .key{
     font-weight: 600;
@@ -200,10 +242,12 @@ video{
 
 .table--row{
     display: flex;
+    padding:5px;
     /* display: grid; */
-    margin-bottom:10px;
+
+    /* margin-bottom:10px; */
     
-    border:1px solid magenta;
+    /* border:1px solid magenta; */
     /* flex-direction: row; */
     /* justify-content: space-around; */
 }
