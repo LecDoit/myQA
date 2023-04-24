@@ -1,19 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import {formatDashboardRC} from '../functions/dashboardTitleRCFunc'
+import Chevron from '../chevron.svg'
 
-export const DbRCTable = ({data}) =>{
+export const DbRCTable = (props) =>{
 
-    const [stateRC,setstateRC] = useState(null)
+    const [dbRc,setDbRc] = useState(false)
 
-
-    useEffect(()=>{
-        if (data){
-            setstateRC(formatDashboardRC(data))
- 
-
-        }
-    },[data])
-    
 
 
 
@@ -54,11 +46,19 @@ export const DbRCTable = ({data}) =>{
 
     return(
        
-        <div className='table'>
-            <div className='table--header'>{renderTableHeader(stateRC)}</div>
-            <div>
-          { renderTableContent(stateRC)}
-          </div>
+        <div>
+
+                <div onClick={()=>{setDbRc(prev=>!prev)}} className='table'>
+                    <div className='title'>Double Click Dashboard Title</div>
+                    <img  className={dbRc===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                </div>
+
+            <div className={dbRc===true ? 'content show':'content'}>
+                <div className='table--header'>{renderTableHeader(props.data)}
+                </div>
+                <div>{renderTableContent(props.data)}
+                </div>
+            </div>
 
         </div>
     )

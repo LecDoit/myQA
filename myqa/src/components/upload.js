@@ -8,14 +8,15 @@ import {WsFormatTable} from './wsFormatTable'
 import {WsFilterFormatTable} from './wsFilterFormatTable'
 // import { RenderTable } from './RenderTable'
 import {formatWorkbook} from '../functions/workbookFormatFunc'
+import {formatDashboard} from '../functions/dashboardFormatFunc'
 import { RenderTable } from './RenderTable'
+import {formatDashboardRC} from '../functions/dashboardTitleRCFunc'
+import {dashboardSize} from '../functions/dashboardSizeFunc'
+import {formatWorksheetRC} from '../functions/worksheetTitleRCFunc'
+import {formatWorksheet} from '../functions/worksheetFormatFunc'
+
 
 var XMLParser = require('react-xml-parser')
-
-
-
-
-
 
 
 export const UploadNav = () =>{
@@ -30,13 +31,47 @@ export const UploadNav = () =>{
     const [isStart,setIsStart] = useState(false)
     const [test,setTest] = useState(false)
 
+    const [stateFormatDb,setstateFormatDb] = useState(null)
+
     const [formatWorkbookState,setformatWorkbookState] = useState(null)
+
+
+    const [stateFormatWs,setstateFormatWs] = useState(null)
+
+
+
+
+    const [stateRC,setstateRC] = useState(null)
+
+    const [stateSize,setstateSize] = useState(null)
+
+    const [wsRC,setWsRC] = useState(null)
+
+
+    useEffect(()=>{
+        if (worksheetsXML){
+            setWsRC(formatWorksheetRC(worksheetsXML))
+            setstateFormatWs(formatWorksheet(worksheetsXML))
+  
+
+        } 
+    },[worksheetsXML])
+   
+
+
 
     const ref = useRef(null)
     const valueCheck = (arg)=>{
         setIsStart(arg)
     }
 
+    useEffect(()=>{
+        if (dashboardsXML){
+            setstateFormatDb(formatDashboard(dashboardsXML))
+            setstateRC(formatDashboardRC(dashboardsXML))
+            setstateSize(dashboardSize(dashboardsXML))
+        } 
+    },[dashboardsXML])
 
 
     useEffect(()=>{
@@ -135,20 +170,20 @@ export const UploadNav = () =>{
                 {/* <WbTable  data={workbookStyleXML} valueCheck={valueCheck} fileName={fileName}></WbTable> */}
 
                 {/* dashboardFormatFunc */}
-                {/* <DbFormatTable data={dashboardsXML}></DbFormatTable> */}
+                {stateFormatDb&&  <DbFormatTable data={stateFormatDb}></DbFormatTable>}
 
                 {/* dashboardTitleRCFunc */}
-                {/* <DbRCTable data={dashboardsXML}></DbRCTable> */}
+                { stateRC && <DbRCTable data={stateRC}></DbRCTable>}
 
                 {/* dashboardSizeFunc */}
-                {/* <DbSize  data={dashboardsXML}></DbSize> */}
+                { stateSize &&  <DbSize  data={stateSize}></DbSize>}
                 
                 {/* WORKSHEETS */}
                 {/* worksheetTitleRCFunc */}
-                {/* <WsRCTable data={worksheetsXML}></WsRCTable> */}
+                { wsRC && <WsRCTable data={wsRC}></WsRCTable>}
 
                 {/* worksheetFormatFunc */}
-                {/* <WsFormatTable data={worksheetsXML}></WsFormatTable> */}
+                { stateFormatWs && <WsFormatTable data={stateFormatWs}></WsFormatTable>}
 
                 {/* FILTERS */}
                 {/* filterTitleRCFunc */}

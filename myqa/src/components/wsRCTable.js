@@ -1,19 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import {formatWorksheetRC} from '../functions/worksheetTitleRCFunc'
+import Chevron from '../chevron.svg'
 
-export const WsRCTable = ({data}) =>{
+export const WsRCTable = (props) =>{
 
-    const [stateRC,setstateRC] = useState(null)
-
-
-    useEffect(()=>{
-        if (data){
-            setstateRC(formatWorksheetRC(data))
-  
-
-        } 
-    },[data])
-    
+    const [wsRC,setWsRcClicked] = useState(false)
 
 
     let renderTableHeader = (arg)=>{
@@ -53,10 +44,17 @@ export const WsRCTable = ({data}) =>{
 
     return(
        
-        <div className='table'>
-            <div className='table--header'>{renderTableHeader(stateRC)}</div>
-            <div>{renderTableContent(stateRC)}</div>
+        <div>
 
+            <div onClick={()=>{setWsRcClicked(prev=>!prev)}} className='table'>
+                <div className='title'>Double Click Worksheets Title</div>
+                <img  className={wsRC===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+            </div>
+
+            <div className={wsRC===true ? 'content show':'content'}>
+                <div className='table--header'>{renderTableHeader(props.data)}</div>
+                <div>{renderTableContent(props.data)}</div>
+            </div>
         </div>
     )
 

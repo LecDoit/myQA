@@ -1,16 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import {formatWorksheet} from '../functions/worksheetFormatFunc'
 
 
-export const WsFormatTable = ({data}) =>{
+export const WsFormatTable = (props) =>{
 
-    const [stateFormatWs,setstateFormatWs] = useState(null)
 
-    useEffect(()=>{
-        if (data){
-            setstateFormatWs(formatWorksheet(data))
-        }
-    },[data])
 
 
 
@@ -50,7 +43,7 @@ export const WsFormatTable = ({data}) =>{
         })
     }
     }
-    let RenderTable=()=>{
+
         return(
             <div>                    
                 <div>Default
@@ -58,35 +51,35 @@ export const WsFormatTable = ({data}) =>{
 
                         <div>Worksheet</div>
                         <div >{renderFixedTableHeader()}</div>
-                        <div >{renderTableContent(stateFormatWs,"worksheet")}</div>
+                        <div >{renderTableContent(props.data,"worksheet")}</div>
                     </div>
 
                     <div className='table'>
                         
                         <div>Pane</div>
                         <div >{renderFixedTableHeader()}</div>
-                        <div >{renderTableContent(stateFormatWs,"defaultPane")}</div>
+                        <div >{renderTableContent(props.data,"defaultPane")}</div>
                     </div>
 
                     <div className='table'>
                         
                         <div>Header</div>
                         <div >{renderFixedTableHeader()}</div>
-                        <div >{renderTableContent(stateFormatWs,"header")}</div>
+                        <div >{renderTableContent(props.data,"header")}</div>
                     </div>
 
                     <div className='table'>
                         
                         <div>Tooltip</div>
                         <div >{renderFixedTableHeader()}</div>
-                        <div >{renderTableContent(stateFormatWs,"tooltip")}</div>
+                        <div >{renderTableContent(props.data,"tooltip")}</div>
                     </div>
 
                     <div className='table'>
                         
                         <div>Title</div>
                         <div >{renderFixedTableHeader()}</div>
-                        <div >{renderTableContent(stateFormatWs,"title")}</div>
+                        <div >{renderTableContent(props.data,"title")}</div>
                     </div>
                 </div>
 
@@ -95,14 +88,14 @@ export const WsFormatTable = ({data}) =>{
 
                         <div>Pane</div>
                         <div >{renderFixedTableHeader()}</div>
-                        <div >{renderTableContent(stateFormatWs,"totalPane")}</div>
+                        <div >{renderTableContent(props.data,"totalPane")}</div>
                     </div>
 
                     <div className='table'>
                         
                         <div>Header</div>
                         <div >{renderFixedTableHeader()}</div>
-                        <div >{renderTableContent(stateFormatWs,"totalHeader")}</div>
+                        <div >{renderTableContent(props.data,"totalHeader")}</div>
                     </div>
                 </div>
 
@@ -111,14 +104,14 @@ export const WsFormatTable = ({data}) =>{
 
                         <div>Pane</div>
                         <div >{renderFixedTableHeader()}</div>
-                        <div >{renderTableContent(stateFormatWs,"grandTotalPane")}</div>
+                        <div >{renderTableContent(props.data,"grandTotalPane")}</div>
                     </div>
 
                     <div className='table'>
                         
                         <div>Header</div>
                         <div >{renderFixedTableHeader()}</div>
-                        <div >{renderTableContent(stateFormatWs,"grandTotalHeader")}</div>
+                        <div >{renderTableContent(props.data,"grandTotalHeader")}</div>
                     </div>
                 </div>
                 
@@ -127,9 +120,6 @@ export const WsFormatTable = ({data}) =>{
     }
 
 
-    if (stateFormatWs){
-        return <RenderTable />
-    } else{
-        return <div></div>
-    }
-}
+
+
+

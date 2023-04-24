@@ -1,19 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import {dashboardSize} from '../functions/dashboardSizeFunc'
+import Chevron from '../chevron.svg'
 
 
-export const DbSize = ({data}) =>{
+export const DbSize = (props) =>{
 
-    const [stateSize,setstateSize] = useState(null)
+    const [stateSize,setstateSizeClicked] = useState(false)
 
 
-    useEffect(()=>{
-        if (data){
-            setstateSize(dashboardSize(data))
-
-        } 
-    },[data])
-    
 
     let renderTableHeader = (arg)=>{
 
@@ -50,9 +44,17 @@ export const DbSize = ({data}) =>{
 
     return(
        
-        <div className='table'>
-            <div className='table--header'>{renderTableHeader(stateSize)}</div>
-            <div>{renderTableContent(stateSize)}</div>
+        <div >
+            
+            <div onClick={()=>{setstateSizeClicked(prev=>!prev)}} className='table'>
+                <div className='title'>Dashboards Size</div>
+                <img  className={stateSize===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+            </div>
+
+            <div className={stateSize===true ? 'content show':'content'}>
+                <div className='table--header'>{renderTableHeader(props.data)}</div>
+                <div>{renderTableContent(props.data)}</div>
+            </div>
 
         </div>
     )
