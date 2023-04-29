@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useMemo } from 'react'
 
-import {worksheetFormatFilters} from '../functions/worksheetFilterFormat'
+import Chevron from '../chevron.svg'
 
 
-export const WsFilterFormatTable = ({data}) =>{
+export const WsFilterFormatTable = (props) =>{
 
-    const [stateWsFilterFormat,setStateWsFilterFormat] = useState(null)
+    const [formatFiltersState,setFormatFiltersClicked] = useState(false)
+    const [quickFilter,setQuickFilterClicked] = useState(false)
+    const [quickFilterTitle,setQuickFilterTitleClicked] = useState(false)
 
-    useEffect(()=>{
-        if (data){
-            setStateWsFilterFormat(worksheetFormatFilters(data))
-        }
-    },[data])
+
+
 
     let renderFixedTableHeader =(arg1)=>{
         if (arg1==='quick-filter'){
@@ -93,25 +92,43 @@ export const WsFilterFormatTable = ({data}) =>{
 
     }
     }
-    let RenderTable=()=>{
-        return(
-            <div>                    
-                <div>Title
-                    <div className='table'>
 
-                        <div>Quick Filter Title</div>
-                        <div >{renderFixedTableHeader('quick-filter-title')}</div>
-                        <div >{renderTableContent(stateWsFilterFormat,'quickFilterTitle')}</div>
-                    </div>
+        return(
+            <div>   
+
+                <div onClick={()=>{setFormatFiltersClicked(prev=>!prev)}} className='table'>
+                    <div className='title'>Format Filters</div>
+                    <img  className={formatFiltersState===false ? 'chevron':'chevron open'} src={Chevron} ></img>
                 </div>
 
-                <div>Body
-                    <div className='table'>
+                <div className={formatFiltersState===true ? 'content show':'content'}>
 
-                        <div>Quick Filter</div>
-                        <div >{renderFixedTableHeader('quick-filter')}</div>
-                        <div >{renderTableContent(stateWsFilterFormat,'quickFilter')}</div>
+                    <div>
+
+                        <div onClick={()=>{setQuickFilterTitleClicked(prev=>!prev)}} className='table--subtitle'>
+                            <div className='subtitle'>Title</div>
+                            <img  className={quickFilterTitle===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                        </div>   
+                        
+                        <div className={quickFilterTitle===true ? 'content show':'content'}>
+                            <div >{renderFixedTableHeader('quick-filter-title')}</div>
+                            <div >{renderTableContent(props.data,'quickFilterTitle')}</div>
+                        </div>
                     </div>
+
+                    <div>
+                    <div onClick={()=>{setQuickFilterClicked(prev=>!prev)}} className='table--subtitle'>
+                            <div className='subtitle'>Body</div>
+                            <img  className={quickFilter===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                        </div>  
+
+                        <div className={quickFilter===true ? 'content show':'content'}>
+
+                            <div >{renderFixedTableHeader('quick-filter')}</div>
+                            <div >{renderTableContent(props.data,'quickFilter')}</div>
+                        </div>
+                    </div>
+
                 </div>
 
 
@@ -121,10 +138,5 @@ export const WsFilterFormatTable = ({data}) =>{
     }
 
 
-    if (stateWsFilterFormat){
-        return <RenderTable />
-        
-    } else{
-        return <div></div>
-    }
-}
+
+

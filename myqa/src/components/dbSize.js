@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import {dashboardSize} from '../functions/dashboardSizeFunc'
 import Chevron from '../chevron.svg'
 
 

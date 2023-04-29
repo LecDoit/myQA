@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import {formatDashboardRC} from '../functions/dashboardTitleRCFunc'
 import Chevron from '../chevron.svg'
 
 export const DbRCTable = (props) =>{

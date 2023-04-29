@@ -6,6 +6,7 @@ import {DbSize} from './dbSize'
 import {DbFormatTable} from './dbFormatTable'
 import {WsFormatTable} from './wsFormatTable'
 import {WsFilterFormatTable} from './wsFilterFormatTable'
+import { FileName } from './fileName'
 // import { RenderTable } from './RenderTable'
 import {formatWorkbook} from '../functions/workbookFormatFunc'
 import {formatDashboard} from '../functions/dashboardFormatFunc'
@@ -14,6 +15,8 @@ import {formatDashboardRC} from '../functions/dashboardTitleRCFunc'
 import {dashboardSize} from '../functions/dashboardSizeFunc'
 import {formatWorksheetRC} from '../functions/worksheetTitleRCFunc'
 import {formatWorksheet} from '../functions/worksheetFormatFunc'
+import {worksheetFormatFilters} from '../functions/worksheetFilterFormat'
+
 
 
 var XMLParser = require('react-xml-parser')
@@ -38,6 +41,8 @@ export const UploadNav = () =>{
 
     const [stateFormatWs,setstateFormatWs] = useState(null)
 
+    const [stateWsFilterFormat,setStateWsFilterFormat] = useState(null)
+
 
 
 
@@ -52,8 +57,7 @@ export const UploadNav = () =>{
         if (worksheetsXML){
             setWsRC(formatWorksheetRC(worksheetsXML))
             setstateFormatWs(formatWorksheet(worksheetsXML))
-  
-
+            setStateWsFilterFormat(worksheetFormatFilters(worksheetsXML))
         } 
     },[worksheetsXML])
    
@@ -100,8 +104,6 @@ export const UploadNav = () =>{
 
     useEffect(() => {
         if (file) {
-            
-        
 
         var xmlRAW = new XMLParser().parseFromString(file,'application/xml')
 
@@ -158,9 +160,9 @@ export const UploadNav = () =>{
                 <div id='upload--content'>Analyze Tableau Workbook</div>
                 <input id='upload--button' className='button' type='file' onChange={handleFileChange}></input>
                 </div>
-            <div ref={ref} id='upload--result'>
+            <div  id='upload--result'>
   
-  
+                {formatWorkbookState && <FileName  data={fileName} valueCheck={valueCheck}/>}
                 {/* WORKBOOK */}
                 {/* workbookFormatFunc */}
                 
@@ -187,7 +189,7 @@ export const UploadNav = () =>{
 
                 {/* FILTERS */}
                 {/* filterTitleRCFunc */}
-                {/* <WsFilterFormatTable data={worksheetsXML} ></WsFilterFormatTable> */}
+                {stateWsFilterFormat && <WsFilterFormatTable data={stateWsFilterFormat} ></WsFilterFormatTable>}
 
             </div>
         </div>

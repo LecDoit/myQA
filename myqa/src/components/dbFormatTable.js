@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import {formatDashboard} from '../functions/dashboardFormatFunc'
+
 import Chevron from '../chevron.svg'
 
 
@@ -11,7 +11,6 @@ export const DbFormatTable = (props) =>{
     const [dashboardSubTitle,setDashboardSubTitleClicked] = useState(false)
     const [textObjects,setTextObjectsClicked] = useState(false)
 
-    // console.log(props.data)
     
 
     let renderFixedTableHeader =()=>{
@@ -66,7 +65,7 @@ export const DbFormatTable = (props) =>{
         })
     }
     }
-    // let RenderTable=()=>{
+ 
         return(
             <div>
                 <div onClick={()=>{setFormatDashboardClicked(prev=>!prev)}} className='table'>
@@ -85,7 +84,7 @@ export const DbFormatTable = (props) =>{
                         </div>
                     </div>
 
-                    <div>
+                    {/* <div>
                         <div onClick={()=>{setDashboardTitleClicked(prev=>!prev)}} className='table--subtitle'>
                             <div className='subtitle'>Dashboard Title</div>
                             <img  className={dashboardTitle===false ? 'chevron':'chevron open'} src={Chevron} ></img>
@@ -95,9 +94,9 @@ export const DbFormatTable = (props) =>{
                             <div >{renderTableContent(props.data,"dashTitle")}</div>
                         </div>
 
-                    </div>
+                    </div> */}
 
-                    <div>
+                    {/* <div>
                         <div onClick={()=>{setDashboardSubTitleClicked(prev=>!prev)}} className='table--subtitle'>
                             <div className='subtitle'>Worksheet Titles</div>
                             <img  className={dashboardSubTitle===false ? 'chevron':'chevron open'} src={Chevron} ></img>
@@ -108,8 +107,9 @@ export const DbFormatTable = (props) =>{
                         </div>
 
 
-                    </div>
-                    <div>
+                    </div> */}
+
+                    {/* <div>
                         <div onClick={()=>{setTextObjectsClicked(prev=>!prev)}} className='table--subtitle'>
                             <div className='subtitle'>Text Objects</div>
                             <img  className={textObjects===false ? 'chevron':'chevron open'} src={Chevron} ></img>
@@ -119,7 +119,7 @@ export const DbFormatTable = (props) =>{
                             <div >{renderTableContent(props.data,"dashText")}</div>
                         </div>
 
-                    </div>
+                    </div> */}
                 </div>
             </div>
             )

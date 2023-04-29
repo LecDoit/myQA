@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import {formatWorksheetRC} from '../functions/worksheetTitleRCFunc'
 import Chevron from '../chevron.svg'
 
 export const WsRCTable = (props) =>{

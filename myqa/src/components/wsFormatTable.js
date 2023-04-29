@@ -21,7 +21,7 @@ export const WsFormatTable = (props) =>{
     const [grandTotalHeader,setGrandTotalHeaderClicked] = useState(false)
 
 
-console.log(props.data)
+
 
     let renderFixedTableHeader =()=>{
         return (

@@ -2,12 +2,11 @@ import React, { useState, useEffect, useMemo } from 'react'
 import Chevron from '../chevron.svg'
 
 
-// import {formatWorkbook} from '../functions/workbookFormatFunc'
 
 
 export const WbTable = (props) =>{
 
-    // const [formatWorkbookState,setformatWorkbookState] = useState(null)
+  
     const [formatWorkbook,setFormatWorkbookClicked] = useState(false)
     const [fonts,setFontsClicked] = useState(false)
     const [lines,setLinesClicked] = useState(false)
