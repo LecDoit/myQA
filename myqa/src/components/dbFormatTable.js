@@ -78,7 +78,7 @@ export const DbFormatTable = (props) =>{
                         <div onClick={()=>{setDashboardShadingClicked(prev=>!prev)}} className='table--subtitle'>
                             <div className='subtitle'>Dashboard Shading</div>
                                 <img  className={dashboardShading===false ? 'chevron':'chevron open'} src={Chevron} ></img>
-                            </div>   
+                        </div>   
                         <div className={dashboardShading===true ? 'content show':'content'}>
                                 <div >{renderFixedTableHeader()}</div>
                                 <div >{renderTableContent(props.data,"table")}</div>
