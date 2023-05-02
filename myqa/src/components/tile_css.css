@@ -1,0 +1,26 @@
+#tile--containter{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid red;
+
+}
+
+.tile{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 10vh;
+    justify-content: center;
+}
+.tile--len{
+    font-size: 25px;
+    color:#45A29E;
+}
+
+.tile:first-child:hover{
+    color:#66FCF1;
+    transition:all 0.6s ease-in-out;
+}
+
+
+

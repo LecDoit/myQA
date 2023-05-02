@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import Chevron from '../chevron.svg'
-
+import React, { useState} from 'react'
+import {ReactComponent as Chevron} from '../chevron.svg'
 export const DbRCTable = (props) =>{
 
     const [dbRc,setDbRc] = useState(false)
@@ -47,9 +46,9 @@ export const DbRCTable = (props) =>{
        
         <div>
 
-                <div onClick={()=>{setDbRc(prev=>!prev)}} className='table'>
+                <div onClick={()=>{setDbRc(prev=>!prev)}} className={dbRc===false ? 'table':'table expand' }>
                     <div className='title'>Double Click Dashboard Title</div>
-                    <img  className={dbRc===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                    <Chevron className={dbRc===false ? 'chevron':'chevron open'}  />
                 </div>
 
             <div className={dbRc===true ? 'content show':'content'}>

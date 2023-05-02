@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import Chevron from '../chevron.svg'
-
+import React, { useState} from 'react'
+import {ReactComponent as Chevron} from '../chevron.svg'
 
 
 
@@ -26,6 +25,7 @@ export const WbTable = (props) =>{
 
 
 
+
     let renderAllTableContent= (arg,arg2)=>{
         if (arg){
       
@@ -42,23 +42,23 @@ export const WbTable = (props) =>{
 
         return(
             <div>
-                <div onClick={()=>{setFormatWorkbookClicked(prev=>!prev)}} className='table'>
+                <div onClick={()=>{setFormatWorkbookClicked(prev=>!prev)}} className={formatWorkbook===false ? 'table':'table expand'}>
                     <div className='title'>Format Workbook</div>
-                    <img  className={formatWorkbook===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                    <Chevron className={formatWorkbook===false ? 'chevron':'chevron open'}  />
                 </div>
                 <div className={formatWorkbook===true ? 'content show':'content'}> 
 
                     <div>
-                        <div onClick={()=>{setFontsClicked(prev=>!prev)}} className='table--subtitle'>
+                        <div onClick={()=>{setFontsClicked(prev=>!prev)}} className={fonts===false ? 'table--subtitle':'table--subtitle expand'}>
                             <div className='subtitle'>Fonts</div>
-                            <img  className={fonts===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                            <Chevron className={fonts===false ? 'chevron':'chevron open'}  />
                         </div>                
                         <div className={fonts===true ? 'content show':'content'}>
 
                             <div>
-                                <div onClick={()=>{setAllClicked(prev=>!prev)}} className='table--sub--subtitle'>
+                                <div onClick={()=>{setAllClicked(prev=>!prev)}} className="table--sub--subtitle">
                                     <div className='subsubtitle'>All</div>
-                                    <img  className={all===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={all===false ? 'chevron':'chevron open'}  />
                                 </div>
                                 <div className={all===true ? 'content show':'content'}>{renderAllTableContent(props.data,"all")}
                                 </div>
@@ -67,7 +67,7 @@ export const WbTable = (props) =>{
                             <div>
                                 <div onClick={()=>{setWorksheetsClicked(prev=>!prev)}} className='table--sub--subtitle'>
                                     <div className='subsubtitle'>WorkSheets</div>
-                                    <img  className={worksheets===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={worksheets===false ? 'chevron':'chevron open'}  />
                                 </div>
                                 <div className={worksheets===true ? 'content show':'content'}>{renderAllTableContent(props.data,'worksheet')}
                                 </div>   
@@ -76,7 +76,7 @@ export const WbTable = (props) =>{
                             <div>
                                 <div onClick={()=>{setTooltips(prev=>!prev)}}className='table--sub--subtitle'>
                                     <div className='subsubtitle'>Tooltips</div>
-                                    <img  className={tooltips===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={tooltips===false ? 'chevron':'chevron open'}  />
                                 </div>         
                                 <div className={tooltips===true ? 'content show':'content'}>{renderAllTableContent(props.data,'tooltip')}
                                 </div>    
@@ -85,7 +85,7 @@ export const WbTable = (props) =>{
                             <div>
                                 <div onClick={()=>{setWorksheetTitles(prev=>!prev)}}className='table--sub--subtitle'>
                                     <div className='subsubtitle'>Worksheet Titles</div>
-                                    <img  className={worksheetTitles===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={worksheetTitles===false ? 'chevron':'chevron open'}  />
                                 </div>
                                 <div className={worksheetTitles===true ? 'content show':'content'}>{renderAllTableContent(props.data,'title')}
                                 </div>
@@ -94,7 +94,7 @@ export const WbTable = (props) =>{
                             <div>
                                 <div onClick={()=>{setDashboardTitles(prev=>!prev)}} className='table--sub--subtitle'>
                                     <div className='subsubtitle'>Dashboard Titles</div>
-                                    <img  className={dashboardTitles===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={dashboardTitles===false ? 'chevron':'chevron open'}  />
                                 </div>
 
                                 <div className={dashboardTitles===true ? 'content show':'content'}>{renderAllTableContent(props.data,'dashTitle')}
@@ -104,7 +104,7 @@ export const WbTable = (props) =>{
                             <div>
                                 <div onClick={()=>{setStoryTitle(prev=>!prev)}} className='table--sub--subtitle'>
                                     <div className='subsubtitle'>Story Titles</div>
-                                    <img  className={storyTitle===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={storyTitle===false ? 'chevron':'chevron open'}  />
                                 </div> 
 
                                 <div className={storyTitle===true ? 'content show':'content'}>{renderAllTableContent(props.data,'storyTitle')}
@@ -115,9 +115,9 @@ export const WbTable = (props) =>{
                     </div>
 
                     <div>
-                        <div onClick={()=>{setLinesClicked(prev=>!prev)}} className='table--subtitle'>
+                        <div onClick={()=>{setLinesClicked(prev=>!prev)}} className={lines===false ? 'table--subtitle': 'table--subtitle expand' }>
                             <div className='subtitle'>Lines</div>
-                            <img  className={lines===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                            <Chevron className={lines===false ? 'chevron':'chevron open'}  />
                         </div>
 
                         <div className={lines===true ? 'content show':'content'}>
@@ -126,7 +126,7 @@ export const WbTable = (props) =>{
                                 <div onClick={()=>{setGridlineClicked(prev=>!prev)}}
                                     className='table--sub--subtitle'>
                                     <div className='subsubtitle'>Grid Lines</div>
-                                        <img  className={gridline===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={gridline===false ? 'chevron':'chevron open'}  />
                                 </div>
                                 <div className={gridline===true ? 'content show':'content'} >{renderAllTableContent(props.data,"gridline")}
                                 </div>
@@ -136,7 +136,7 @@ export const WbTable = (props) =>{
                                 <div onClick={()=>{setZerolineClicked(prev=>!prev)}}
                                     className='table--sub--subtitle'>
                                     <div className='subsubtitle'>Zero Lines</div>
-                                        <img  className={zeroline===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={zeroline===false ? 'chevron':'chevron open'}  />
                                 </div>
                                 <div className={zeroline===true ? 'content show':'content'} >{renderAllTableContent(props.data,"zeroline")}
                                 </div>
@@ -145,7 +145,7 @@ export const WbTable = (props) =>{
                                 <div onClick={()=>{setTrendlineClicked(prev=>!prev)}}
                                     className='table--sub--subtitle'>
                                     <div className='subsubtitle'>Trend Lines</div>
-                                        <img  className={trendline===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={trendline===false ? 'chevron':'chevron open'}  />
                                 </div>
                                 <div className={trendline===true ? 'content show':'content'} >{renderAllTableContent(props.data,"trendline")}
                                 </div>
@@ -156,7 +156,7 @@ export const WbTable = (props) =>{
                                 <div onClick={()=>{setReflineClicked(prev=>!prev)}}
                                     className='table--sub--subtitle'>
                                     <div className='subsubtitle'>Ref Lines</div>
-                                        <img  className={refline===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={refline===false ? 'chevron':'chevron open'}  />
                                 </div>
                                 <div className={refline===true ? 'content show':'content'} >{renderAllTableContent(props.data,"refline")}
                                 </div>
@@ -166,7 +166,7 @@ export const WbTable = (props) =>{
                                 <div onClick={()=>{setDroplineClicked(prev=>!prev)}}
                                     className='table--sub--subtitle'>
                                     <div className='subsubtitle'>Drop Lines</div>
-                                        <img  className={dropline===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={dropline===false ? 'chevron':'chevron open'}  />
                                 </div>
                                 <div className={dropline===true ? 'content show':'content'} >{renderAllTableContent(props.data,"dropline")}
                                 </div>
@@ -176,7 +176,7 @@ export const WbTable = (props) =>{
                                 <div onClick={()=>{setAxisClicked(prev=>!prev)}}
                                     className='table--sub--subtitle'>
                                     <div className='subsubtitle'>Axis</div>
-                                        <img  className={axis===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={axis===false ? 'chevron':'chevron open'}  />
                                 </div>
 
                                 <div className={axis===true ? 'content show':'content'} >{renderAllTableContent(props.data,"axis")}

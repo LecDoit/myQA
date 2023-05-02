@@ -16,6 +16,8 @@ import {dashboardSize} from '../functions/dashboardSizeFunc'
 import {formatWorksheetRC} from '../functions/worksheetTitleRCFunc'
 import {formatWorksheet} from '../functions/worksheetFormatFunc'
 import {worksheetFormatFilters} from '../functions/worksheetFilterFormat'
+import { Tiles } from './tiles'
+
 
 
 
@@ -25,32 +27,19 @@ var XMLParser = require('react-xml-parser')
 export const UploadNav = () =>{
     const [file, setFile] = useState(null)
     const [fileName,setFileName] = useState(null)
-
     const [workbookStyleXML, setWorkbookStyleXML] = useState(null)
     const [dashboardsXML, setDashboardsXML] = useState(null)
     const [worksheetsXML, setWorksheetsXML] = useState(null)
-    const [dashboards, setdashboards] = useState([])
-    const [dashTitle, setDashTitle] = useState([])
     const [isStart,setIsStart] = useState(false)
-    const [test,setTest] = useState(false)
-
     const [stateFormatDb,setstateFormatDb] = useState(null)
-
     const [formatWorkbookState,setformatWorkbookState] = useState(null)
-
-
     const [stateFormatWs,setstateFormatWs] = useState(null)
-
     const [stateWsFilterFormat,setStateWsFilterFormat] = useState(null)
-
-
-
-
     const [stateRC,setstateRC] = useState(null)
-
     const [stateSize,setstateSize] = useState(null)
-
     const [wsRC,setWsRC] = useState(null)
+
+
 
 
     useEffect(()=>{
@@ -62,9 +51,6 @@ export const UploadNav = () =>{
     },[worksheetsXML])
    
 
-
-
-    const ref = useRef(null)
     const valueCheck = (arg)=>{
         setIsStart(arg)
     }
@@ -74,6 +60,7 @@ export const UploadNav = () =>{
             setstateFormatDb(formatDashboard(dashboardsXML))
             setstateRC(formatDashboardRC(dashboardsXML))
             setstateSize(dashboardSize(dashboardsXML))
+            
         } 
     },[dashboardsXML])
 
@@ -107,9 +94,6 @@ export const UploadNav = () =>{
 
         var xmlRAW = new XMLParser().parseFromString(file,'application/xml')
 
-
-
-
         let workbookXMLGet= (xmlRAW.getElementsByTagName('workbook')[0].children)
         let dashboardsXMLGet = xmlRAW.getElementsByTagName('dashboards')[0]
 
@@ -117,9 +101,6 @@ export const UploadNav = () =>{
 
         let worksheetsXMLGet = xmlRAW.getElementsByTagName('worksheets')[0]
         setWorksheetsXML(worksheetsXMLGet)
-        // handleScroll(ref)
-
-
 
         for (let a = 0;a<workbookXMLGet.length;a++){
 
@@ -139,14 +120,21 @@ export const UploadNav = () =>{
     useEffect(()=>{
         if (isStart){
             const firstDiv = document.getElementById('dashboard--title')
+            const mainDiv = document.getElementById('upload--result')
+
+            const bottomSizeDiv = document.createElement('div')
+            bottomSizeDiv.classList.add('test')
+            mainDiv.appendChild(bottomSizeDiv)
+
             const cords = firstDiv.getBoundingClientRect().y -60
+            const valueToGrow = window.innerHeight+cords
+            bottomSizeDiv.style.height=valueToGrow+'px'
             window.scrollTo({
                 top:cords,
                 behavior:'smooth'
-            })
+            })    
 
-
-            
+    
         }
 
 
@@ -163,23 +151,18 @@ export const UploadNav = () =>{
             <div  id='upload--result'>
   
                 {formatWorkbookState && <FileName  data={fileName} valueCheck={valueCheck}/>}
-                {/* WORKBOOK */}
-                {/* workbookFormatFunc */}
-                
-                { formatWorkbookState  && <WbTable data={formatWorkbookState}/> 
-                }
-                {/* {  <RenderTable />} */}
-                {/* <WbTable  data={workbookStyleXML} valueCheck={valueCheck} fileName={fileName}></WbTable> */}
 
+
+                {formatWorkbookState && <Tiles db={stateRC} ws={wsRC}/> }
                 {/* dashboardFormatFunc */}
-                {stateFormatDb&&  <DbFormatTable data={stateFormatDb}></DbFormatTable>}
+                {stateFormatDb &&  <DbFormatTable data={stateFormatDb}></DbFormatTable>}
 
                 {/* dashboardTitleRCFunc */}
                 { stateRC && <DbRCTable data={stateRC}></DbRCTable>}
 
                 {/* dashboardSizeFunc */}
                 { stateSize &&  <DbSize  data={stateSize}></DbSize>}
-                
+
                 {/* WORKSHEETS */}
                 {/* worksheetTitleRCFunc */}
                 { wsRC && <WsRCTable data={wsRC}></WsRCTable>}
@@ -190,6 +173,18 @@ export const UploadNav = () =>{
                 {/* FILTERS */}
                 {/* filterTitleRCFunc */}
                 {stateWsFilterFormat && <WsFilterFormatTable data={stateWsFilterFormat} ></WsFilterFormatTable>}
+
+                {/* WORKBOOK */}
+                {/* workbookFormatFunc */}
+                
+                { formatWorkbookState  && <WbTable data={formatWorkbookState}/>}
+
+
+                
+
+
+
+
 
             </div>
         </div>

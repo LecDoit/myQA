@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import Chevron from '../chevron.svg'
+import React, { useState} from 'react'
+import {ReactComponent as Chevron} from '../chevron.svg'
+
 
 
 export const DbSize = (props) =>{
@@ -45,9 +46,9 @@ export const DbSize = (props) =>{
        
         <div >
             
-            <div onClick={()=>{setstateSizeClicked(prev=>!prev)}} className='table'>
+            <div onClick={()=>{setstateSizeClicked(prev=>!prev)}} className={stateSize===false ? 'table':'table expand'} >
                 <div className='title'>Dashboards Size</div>
-                <img  className={stateSize===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                <Chevron className={stateSize===false ? 'chevron':'chevron open'}  />
             </div>
 
             <div className={stateSize===true ? 'content show':'content'}>

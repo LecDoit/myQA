@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react'
-
-import Chevron from '../chevron.svg'
+import React, { useState} from 'react'
+import {ReactComponent as Chevron} from '../chevron.svg'
 
 
 export const WsFilterFormatTable = (props) =>{
@@ -96,18 +95,18 @@ export const WsFilterFormatTable = (props) =>{
         return(
             <div>   
 
-                <div onClick={()=>{setFormatFiltersClicked(prev=>!prev)}} className='table'>
+                <div onClick={()=>{setFormatFiltersClicked(prev=>!prev)}} className={formatFiltersState===false ? 'table':'table expand'}>
                     <div className='title'>Format Filters</div>
-                    <img  className={formatFiltersState===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                    <Chevron className={formatFiltersState===false ? 'chevron':'chevron open'}  />
                 </div>
 
                 <div className={formatFiltersState===true ? 'content show':'content'}>
 
                     <div>
 
-                        <div onClick={()=>{setQuickFilterTitleClicked(prev=>!prev)}} className='table--subtitle'>
+                        <div onClick={()=>{setQuickFilterTitleClicked(prev=>!prev)}} className={quickFilterTitle===false ? 'table--subtitle': 'table--subtitle expand' }>
                             <div className='subtitle'>Title</div>
-                            <img  className={quickFilterTitle===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                            <Chevron className={quickFilterTitle===false ? 'chevron':'chevron open'}  />
                         </div>   
                         
                         <div className={quickFilterTitle===true ? 'content show':'content'}>
@@ -117,9 +116,9 @@ export const WsFilterFormatTable = (props) =>{
                     </div>
 
                     <div>
-                    <div onClick={()=>{setQuickFilterClicked(prev=>!prev)}} className='table--subtitle'>
+                    <div onClick={()=>{setQuickFilterClicked(prev=>!prev)}} className={quickFilter===false ? 'table--subtitle': 'table--subtitle expand' }>
                             <div className='subtitle'>Body</div>
-                            <img  className={quickFilter===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                            <Chevron className={quickFilter===false ? 'chevron':'chevron open'}  />
                         </div>  
 
                         <div className={quickFilter===true ? 'content show':'content'}>

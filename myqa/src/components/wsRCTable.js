@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import Chevron from '../chevron.svg'
+import React, { useState} from 'react'
+import {ReactComponent as Chevron} from '../chevron.svg'
 
 export const WsRCTable = (props) =>{
 
@@ -45,9 +45,9 @@ export const WsRCTable = (props) =>{
        
         <div>
 
-            <div onClick={()=>{setWsRcClicked(prev=>!prev)}} className='table'>
+            <div onClick={()=>{setWsRcClicked(prev=>!prev)}} className={wsRC===false ? 'table':'table expand'} >
                 <div className='title'>Double Click Worksheets Title</div>
-                <img  className={wsRC===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                <Chevron className={wsRC===false ? 'chevron':'chevron open'}  />
             </div>
 
             <div className={wsRC===true ? 'content show':'content'}>

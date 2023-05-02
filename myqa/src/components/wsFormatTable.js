@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import Chevron from '../chevron.svg'
+import React, { useState} from 'react'
+import {ReactComponent as Chevron} from '../chevron.svg'
 
 export const WsFormatTable = (props) =>{
 
@@ -62,25 +62,25 @@ export const WsFormatTable = (props) =>{
         return(
             <div>       
 
-                <div onClick={()=>{setWorksheetFormatStateClicked(prev=>!prev)}} className='table'>
+                <div onClick={()=>{setWorksheetFormatStateClicked(prev=>!prev)}} className={worksheetFormatState===false ? 'table':'table expand'}>
                     <div className='title'>Worksheets Format</div>
-                    <img  className={worksheetFormatState===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                    <Chevron className={worksheetFormatState===false ? 'chevron':'chevron open'}  />
                 </div>
 
                 <div className={worksheetFormatState===true ? 'content show':'content'}>
 
                     <div>
-                        <div onClick={()=>{setDefaultStateClicked(prev=>!prev)}} className='table--subtitle'>
+                        <div onClick={()=>{setDefaultStateClicked(prev=>!prev)}} className={defaultState===false ? 'table--subtitle': 'table--subtitle expand' }>
                             <div className='subtitle'>Default</div>
-                            <img  className={defaultState===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                            <Chevron className={defaultState===false ? 'chevron':'chevron open'}  />
                         </div>   
 
                         <div className={defaultState===true ? 'content show':'content'}>
                             <div>
                                 <div>
-                                    <div onClick={()=>{setWorksheetStateClicked(prev=>!prev)}} className='table--sub--subtitle'>
+                                    <div onClick={()=>{setWorksheetStateClicked(prev=>!prev)}} className={worksheetState===false ? 'table--subtitle': 'table--subtitle expand' }>
                                         <div className='subsubtitle'>Worksheets</div>
-                                        <img  className={worksheetState===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                        <Chevron className={worksheetState===false ? 'chevron':'chevron open'}  />
                                     </div>
 
                                     <div className={worksheetState===true ? 'content show':'content'}>
@@ -90,9 +90,9 @@ export const WsFormatTable = (props) =>{
                                 </div>
 
                                 <div>
-                                    <div onClick={()=>{setPaneStateClicked(prev=>!prev)}} className='table--sub--subtitle'>
+                                    <div onClick={()=>{setPaneStateClicked(prev=>!prev)}} className={paneState===false ? 'table--subtitle': 'table--subtitle expand' }>
                                         <div className='subsubtitle'>Pane</div>
-                                        <img  className={paneState===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                        <Chevron className={paneState===false ? 'chevron':'chevron open'}  />
                                     </div>
 
                                     <div className={paneState===true ? 'content show':'content'}>
@@ -102,9 +102,9 @@ export const WsFormatTable = (props) =>{
                                 </div>
 
                                 <div>
-                                    <div onClick={()=>{setHeaderStateClicked(prev=>!prev)}} className='table--sub--subtitle'>
+                                    <div onClick={()=>{setHeaderStateClicked(prev=>!prev)}} className={headerState===false ? 'table--subtitle': 'table--subtitle expand' }>
                                         <div className='subsubtitle'>Header</div>
-                                        <img  className={headerState===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                        <Chevron className={headerState===false ? 'chevron':'chevron open'}  />
                                     </div>
 
                                     <div className={headerState===true ? 'content show':'content'}>
@@ -115,9 +115,9 @@ export const WsFormatTable = (props) =>{
 
                                 <div>
                                     
-                                    <div onClick={()=>{setHeaderStateClicked(prev=>!prev)}} className='table--sub--subtitle'>
+                                    <div onClick={()=>{setTooltipStateClicked(prev=>!prev)}} className={tooltipState===false ? 'table--subtitle': 'table--subtitle expand' }>
                                         <div className='subsubtitle'>Tooltips</div>
-                                        <img  className={headerState===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                        <Chevron className={tooltipState===false ? 'chevron':'chevron open'}  />
                                     </div>
 
                                     <div className={tooltipState===true ? 'content show':'content'}>
@@ -128,9 +128,9 @@ export const WsFormatTable = (props) =>{
 
                                 <div>
                                     
-                                    <div onClick={()=>{setTitleStateClicked(prev=>!prev)}} className='table--sub--subtitle'>
+                                    <div onClick={()=>{setTitleStateClicked(prev=>!prev)}} className={titleState===false ? 'table--subtitle': 'table--subtitle expand' }>
                                         <div className='subsubtitle'>Title</div>
-                                        <img  className={titleState===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                        <Chevron className={titleState===false ? 'chevron':'chevron open'}  />
                                     </div>
 
                                     <div className={titleState===true ? 'content show':'content'}>
@@ -143,18 +143,18 @@ export const WsFormatTable = (props) =>{
                     </div>
 
                     <div>
-                        <div onClick={()=>{setTotalStateClicked(prev=>!prev)}} className='table--subtitle'>
+                        <div onClick={()=>{setTotalStateClicked(prev=>!prev)}} className={totalState===false ? 'table--subtitle': 'table--subtitle expand' }>
                             <div className='subtitle'>Total</div>
-                            <img  className={totalState===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                            <Chevron className={totalState===false ? 'chevron':'chevron open'}  />
                         </div> 
 
                         <div className={totalState===true ? 'content show':'content'} >
 
                             <div>
 
-                                <div onClick={()=>{setTotalPaneClicked(prev=>!prev)}} className='table--sub--subtitle'>
+                                <div onClick={()=>{setTotalPaneClicked(prev=>!prev)}} className={totalPane===false ? 'table--subtitle': 'table--subtitle expand' }>
                                     <div className='subsubtitle'>Pane</div>
-                                    <img  className={totalPane===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={totalPane===false ? 'chevron':'chevron open'}  />
                                 </div>
                                 <div className={totalPane===true ? 'content show':'content'}>
                                     <div >{renderFixedTableHeader()}</div>
@@ -163,9 +163,9 @@ export const WsFormatTable = (props) =>{
                             </div>
 
                             <div>           
-                                <div onClick={()=>{setTotalHeaderClicked(prev=>!prev)}} className='table--sub--subtitle'>
+                                <div onClick={()=>{setTotalHeaderClicked(prev=>!prev)}} className={totalHeader===false ? 'table--subtitle': 'table--subtitle expand' }>
                                     <div className='subsubtitle'>Header</div>
-                                    <img  className={totalHeader===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={totalHeader===false ? 'chevron':'chevron open'}  />
                                 </div>
 
                                 <div className={totalHeader===true ? 'content show':'content'}>
@@ -177,16 +177,16 @@ export const WsFormatTable = (props) =>{
                     </div>
 
                     <div>
-                        <div onClick={()=>{setGrandTotalState(prev=>!prev)}} className='table--subtitle'>
+                        <div onClick={()=>{setGrandTotalState(prev=>!prev)}} className={grandTotalState===false ? 'table--subtitle': 'table--subtitle expand' }>
                             <div className='subtitle'>Grand Total</div>
-                            <img  className={grandTotalState===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                            <Chevron className={grandTotalState===false ? 'chevron':'chevron open'}  />
                         </div>
                         
                         <div className={grandTotalState===true ? 'content show':'content'}>
                             <div>
-                                <div onClick={()=>{setGrandTotalPaneClicked(prev=>!prev)}} className='table--sub--subtitle'>
+                                <div onClick={()=>{setGrandTotalPaneClicked(prev=>!prev)}} className={grandTotalPane===false ? 'table--subtitle': 'table--subtitle expand' }>
                                     <div className='subsubtitle'>Pane</div>
-                                    <img  className={grandTotalPane===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={grandTotalPane===false ? 'chevron':'chevron open'}  />
                                 </div>
 
                                 <div className={grandTotalPane===true ? 'content show':'content'}>
@@ -196,9 +196,9 @@ export const WsFormatTable = (props) =>{
                             </div>
 
                             <div>                                
-                                <div onClick={()=>{setGrandTotalHeaderClicked(prev=>!prev)}} className='table--sub--subtitle'>
+                                <div onClick={()=>{setGrandTotalHeaderClicked(prev=>!prev)}} className={grandTotalHeader===false ? 'table--subtitle': 'table--subtitle expand' }>
                                     <div className='subsubtitle'>Header</div>
-                                    <img  className={grandTotalHeader===false ? 'chevron':'chevron open'} src={Chevron} ></img>
+                                    <Chevron className={grandTotalHeader===false ? 'chevron':'chevron open'}  />
                                 </div>
 
                                 <div className={grandTotalHeader===true ? 'content show':'content'}>
