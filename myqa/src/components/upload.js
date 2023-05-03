@@ -1,4 +1,6 @@
-import React, { useState, useEffect,useRef } from 'react'
+import React, { useState, useEffect} from 'react'
+import JSZip from 'jszip'
+
 import {DbRCTable} from './dbRCTable'
 import {WsRCTable} from './wsRCTable'
 import {WbTable} from './wbTable'
@@ -6,17 +8,15 @@ import {DbSize} from './dbSize'
 import {DbFormatTable} from './dbFormatTable'
 import {WsFormatTable} from './wsFormatTable'
 import {WsFilterFormatTable} from './wsFilterFormatTable'
-import { FileName } from './fileName'
-// import { RenderTable } from './RenderTable'
+import { FileName} from './fileName'
 import {formatWorkbook} from '../functions/workbookFormatFunc'
 import {formatDashboard} from '../functions/dashboardFormatFunc'
-import { RenderTable } from './RenderTable'
 import {formatDashboardRC} from '../functions/dashboardTitleRCFunc'
 import {dashboardSize} from '../functions/dashboardSizeFunc'
 import {formatWorksheetRC} from '../functions/worksheetTitleRCFunc'
 import {formatWorksheet} from '../functions/worksheetFormatFunc'
 import {worksheetFormatFilters} from '../functions/worksheetFilterFormat'
-import { Tiles } from './tiles'
+import {Tiles} from './tiles'
 
 
 
@@ -39,6 +39,7 @@ export const UploadNav = () =>{
     const [stateSize,setstateSize] = useState(null)
     const [wsRC,setWsRC] = useState(null)
 
+   
 
 
 
@@ -76,12 +77,46 @@ export const UploadNav = () =>{
         const file = e.target.files[0]
         const reader = new FileReader();
 
-        setFileName(file.name.substring(0,file.name.lastIndexOf('.')))
-        reader.readAsText(file);
-        reader.onload = () => {
-        setFile(reader.result)  
- 
+        const fileFormat = (file.name.substring(file.name.lastIndexOf('.'),file.name.length))
+
+        if (fileFormat==='.twb'){
+
+            setFileName(file.name.substring(0,file.name.lastIndexOf('.')))
+
+            reader.readAsText(file);
+            reader.onload = () => {
+             setFile(reader.result)  
+     
+            }
+        } else if(fileFormat==='.twbx'){
+            const zip = new JSZip();
+            zip.loadAsync(file)
+                .then((content)=>{
+                    const files = content.files
+                    const filesKeys = Object.keys(files)
+
+
+                    for (let a = 0 ; a<filesKeys.length ; a++){
+                        const filesKeysFormat = filesKeys[a].substring(file.name.lastIndexOf('.'),file.name.length)
+                        if (filesKeysFormat==='.twb'){
+                            files[filesKeys[a]].async('string').then((contentTxt)=>{
+                                setFileName(filesKeys[a].substring(0,filesKeys[a].lastIndexOf('.')))
+                                setFile(contentTxt) 
+
+                            })                      
+             
+                        }
+                    }
+                    
+              
+                })
+        
+        
         }
+         else {
+            alert('Wrong file format.\nPlease choose .twb or .twbx extension.')
+        }
+
 
         reader.onerror = () =>{
             alert('wrong file ' + reader.error)
@@ -91,6 +126,7 @@ export const UploadNav = () =>{
 
     useEffect(() => {
         if (file) {
+            console.log('works')
 
         var xmlRAW = new XMLParser().parseFromString(file,'application/xml')
 
@@ -178,12 +214,6 @@ export const UploadNav = () =>{
                 {/* workbookFormatFunc */}
                 
                 { formatWorkbookState  && <WbTable data={formatWorkbookState}/>}
-
-
-                
-
-
-
 
 
             </div>

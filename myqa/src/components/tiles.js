@@ -1,5 +1,5 @@
 import React from 'react'
-import "./tile_css.css"
+import "../tile_css.css"
 
 export function Tiles(props) {
 

@@ -1,28 +1,12 @@
 
-import React, { useState, useEffect, useMemo } from 'react'
-import axios from 'axios'
+import React from 'react'
 import {HeroIndex} from '../src/heroComponent/heroIndex'
-// import {formatDashboard} from './functions/dashboardFormatFunc'
-// import {formatWorkbook} from './functions/workbookFormatFunc'
-// import {formatDashboardRC} from './functions/dashboardTitleRCFunc'
-// import {formatWorksheetRC} from './functions/worksheetTitleRCFunc'
-// import {formatWorksheet} from './functions/worksheetFormatFunc'
-// import {dashboardSize} from './functions/dashboardSizeFunc'
-// import {wsFilterListFunc} from './functions/filterListFunc'
-// import {filterTitleRC} from './functions/filterTitleRCFunc'
-// import {worksheetFormatFilters} from './functions/worksheetFilterFormat'
-
-
-
 import { Navbar } from './components/nav'
 import { UploadNav } from './components/upload'
-import { AnimationNav } from './components/animation'
-
 import "./style.css"
 
 
 const App = () => {
-  // var XMLParser = require('react-xml-parser')
 
   
 

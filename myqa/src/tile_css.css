@@ -1,0 +1,35 @@
+#tile--containter{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #1F2833;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+
+
+}
+
+#tile--containter>.tile>.tile--len:hover{
+    color:#66FCF1;
+    transition:all 0.6s ease-in-out;
+}
+
+
+
+.tile{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 5vh;
+    justify-content: center;
+    gap:7px;
+}
+
+.tile--len{
+    font-size: 25px;
+    color:#45A29E;
+}
+.tile--p{
+    font-size: 13px;
+}
+
+

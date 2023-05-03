@@ -4,10 +4,9 @@ import videoBG from './video.mp4'
 export const HeroIndex = () => {
   return (
     <div id='hero--containter' >
+      <div className='overlay'></div>
       <video src={videoBG} autoPlay loop muted></video>
-      {/* <div id='hero--content'>
-        Analyze Tableau Workbook
-      </div> */}
+
     </div>
   )
 }

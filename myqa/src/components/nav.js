@@ -1,5 +1,5 @@
-import React ,{useState,useEffect} from "react"
-
+import React ,{useState} from "react"
+import "../nav_css.css"
 
  export const Navbar = () =>{
     const [navbar,setNavbar] = useState(false)
@@ -16,11 +16,9 @@ import React ,{useState,useEffect} from "react"
 
     return (
         <div className={navbar ? 'navbar active' : 'navbar'}>
-            <div id='navbar--left'>myQA</div>
+            <div onClick={()=>{window.location.reload(false)}} id='navbar--left'>myQA</div>
             <div id="navbar--right">
-                <div id='home'>Home</div>
-                <div id='about'>About</div>
-                <div id='git'>github</div>
+                <div onClick={()=>{window.open('https://github.com/LecDoit/myQA')}} id='git'>GitHub</div>
             </div>
         </div>
     )
